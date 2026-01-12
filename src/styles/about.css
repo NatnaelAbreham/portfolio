@@ -1,0 +1,117 @@
+/* =========================
+   ABOUT SECTION
+========================= */
+.about-section {
+  position: relative;
+}
+
+/* =========================
+   TIMELINE
+========================= */
+.timeline {
+  position: relative;
+  padding-left: 30px;
+}
+
+.timeline::before {
+  content: '';
+  position: absolute;
+  left: 4px;
+  top: 0;
+  bottom: 0;
+  width: 3px;
+  background: linear-gradient(
+    to bottom,
+    var(--primary-color),
+    var(--secondary-color)
+  );
+}
+
+.timeline-item {
+  position: relative;
+  background: var(--card-bg);
+  padding: 24px;
+  border-radius: 16px;
+  border: 1px solid var(--border-subtle);
+  margin-bottom: 28px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.timeline-item::before {
+  content: '';
+  position: absolute;
+  left: -38px;
+  top: 28px;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: var(--primary-color);
+  box-shadow: 0 0 0 4px var(--bg-main);
+}
+
+.timeline-item:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+}
+
+.timeline-item h4 {
+  font-weight: 700;
+  margin-bottom: 6px;
+}
+
+.timeline-date {
+  display: inline-block;
+  font-size: 0.85rem;
+  opacity: 0.7;
+  margin-bottom: 10px;
+}
+
+.timeline-item p {
+  margin-bottom: 0;
+}
+
+/* =========================
+   ABOUT CONTENT
+========================= */
+.about-content p {
+  color: var(--text-secondary);
+}
+
+.about-content .lead {
+  font-weight: 500;
+  color: var(--text-primary);
+}
+
+/* =========================
+   FEATURES
+========================= */
+.about-feature {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 14px 18px;
+  border-radius: 14px;
+  background: var(--card-bg);
+  border: 1px solid var(--border-subtle);
+  transition: all 0.3s ease;
+}
+
+.about-feature i {
+  font-size: 1.4rem;
+  color: var(--primary-color);
+}
+
+.about-feature h6 {
+  margin: 0;
+  font-weight: 600;
+}
+
+.about-feature span {
+  font-size: 0.85rem;
+  opacity: 0.7;
+}
+
+.about-feature:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.12);
+}
