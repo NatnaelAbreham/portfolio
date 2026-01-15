@@ -1,0 +1,128 @@
+/* projects.css */
+[data-theme] .projects-section {
+  padding: 90px 0;
+  background: var(--bg-main);
+  color: var(--text-primary);
+}
+
+[data-theme] .projects-section .container {
+  background: inherit;
+}
+
+/* =========================
+   TITLES
+========================= */
+[data-theme] .projects-title {
+  font-size: 2.6rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 10px;
+}
+
+[data-theme] .projects-subtitle {
+  max-width: 600px;
+  margin: 0 auto 30px;
+  color: var(--text-secondary);
+  font-size: 1.1rem;
+}
+
+/* =========================
+   FILTERS
+========================= */
+[data-theme] .projects-filters {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  flex-wrap: wrap;
+  margin-bottom: 40px;
+}
+
+[data-theme] .filter-btn {
+  padding: 10px 22px;
+  border-radius: 25px;
+  background: transparent;
+  border: 1px solid var(--primary-color);
+  color: var(--primary-color);
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+[data-theme] .filter-btn:hover,
+[data-theme] .filter-btn.active {
+  background: linear-gradient(
+    90deg,
+    var(--primary-color),
+    var(--secondary-color)
+  );
+  color: #ffffff;
+  border-color: transparent;
+}
+
+/* =========================
+   PROJECT CARD - IMPORTANT FIX
+========================= */
+[data-theme] .project-card {
+  height: 100%;
+  background: var(--card-bg) !important;
+  border-radius: 18px;
+  overflow: hidden;
+  border: 1px solid var(--border-subtle);
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+
+[data-theme] .project-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+}
+
+/* =========================
+   IMAGE
+========================= */
+[data-theme] .project-image {
+  height: 200px;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+/* =========================
+   CONTENT
+========================= */
+[data-theme] .project-content {
+  padding: 25px;
+  color: var(--text-primary);
+}
+
+[data-theme] .project-content h5 {
+  margin-bottom: 12px;
+  font-weight: 600;
+  color: var(--text-primary);
+  font-size: 1.3rem;
+}
+
+[data-theme] .project-content p {
+  font-size: 0.95rem;
+  color: var(--text-secondary);
+  line-height: 1.5;
+  margin-bottom: 15px;
+}
+
+/* =========================
+   TECH TAGS
+========================= */
+[data-theme] .project-tech {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 15px;
+}
+
+[data-theme] .project-tech span {
+  background: var(--tag-bg);
+  color: var(--text-secondary);
+  padding: 5px 12px;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  font-weight: 500;
+}

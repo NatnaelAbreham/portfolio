@@ -6,6 +6,8 @@ import Hero from './components/Hero'
 import Skills from './components/Skills'
 import About from './components/About.jsx'
 import Certificates from './components/Certificates.jsx'
+import Projects from './components/Projects.jsx'
+import Contact from './components/Contact.jsx'
 
 function App() {
   const [theme, setTheme] = useState(() => {
@@ -46,6 +48,8 @@ function App() {
       <About />
       <Skills />
       <Certificates />
+      <Projects />
+      <Contact />
      
     </div>
   )
