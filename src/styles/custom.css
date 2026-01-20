@@ -48,31 +48,109 @@
 
 
 
+
+
+
+
+
+
+
+
+
 .hero-section {
   min-height: 100vh;
   display: flex;
   align-items: center;
-  /* background: linear-gradient(135deg, #020d36 0%, #764ba2 100%); */
-  background: linear-gradient(135deg, #000000 0%, #053e64  100%);
- 
   position: relative;
+  color: var(--text-primary);
+  overflow: hidden;
+
+  background: var(--hero-bg-base);
+  transition: background 1s ease-in-out;
+  z-index: 1;
+}
+
+.hero-section p {
+  color: var(--text-secondary);
+}
+/* Overlay for navbar contrast */
+.hero-section::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: var(--hero-overlay);
+  transition: background 1s ease-in-out;
+  z-index: 2;
+}
+
+/* 3D-like layered background */
+.hero-layers {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
   overflow: hidden;
 }
 
-.hero-section::before {
-  content: '';
+.hero-layer {
   position: absolute;
   width: 200%;
   height: 200%;
-  background: radial-gradient(circle, rgba(255,255,255,0.1) 1px, transparent 1px);
-  background-size: 50px 50px;
-  animation: float 20s linear infinite;
+  border-radius: 50%;
+  background: var(--hero-bg-layer1);
+  animation: floatLayer 40s linear infinite;
 }
 
-@keyframes float {
-  0% { transform: translate(0, 0) rotate(0deg); }
-  100% { transform: translate(-50px, -50px) rotate(360deg); }
+.hero-layer:nth-child(2) {
+  background: var(--hero-bg-layer2);
+  animation-duration: 60s;
+  opacity: 0.6;
 }
+
+/* Floating layers for parallax effect */
+@keyframes floatLayer {
+  0% { transform: translate(0,0) rotate(0deg); }
+  50% { transform: translate(-50px,-50px) rotate(180deg); }
+  100% { transform: translate(0,0) rotate(360deg); }
+}
+
+
+
+/* Ensure hero content is above all */
+.hero-section .container {
+  position: relative;
+  z-index: 4;
+}
+
+
+.hero-glass {
+  background: rgba(255, 255, 255, 0.12); /* base transparency */
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+
+  border-radius: 20px;
+  padding: 3rem;
+
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  box-shadow:
+    0 20px 40px rgba(0, 0, 0, 0.25),
+    inset 0 1px 1px rgba(255, 255, 255, 0.15);
+
+  transition: background 0.4s ease, box-shadow 0.4s ease;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 .social-icon {
   display: inline-flex;
@@ -112,6 +190,39 @@
   border-radius: 50%;
   background: white;
 }
+
+
+
+
+
+
+
+.navbar-toggler {
+  border: none;
+  background: transparent;
+  padding: 0.25rem 0.5rem;
+}
+
+.navbar-toggler i {
+  color: var(--nav-toggle-color);
+  transition: color 0.3s ease, transform 0.3s ease;
+}
+.navbar-toggler:hover i {
+  color: var(--primary-color);
+  transform: scale(1.1);
+}
+
+.navbar-toggler:focus {
+  box-shadow: none;
+}
+.navbar-scrolled .navbar-toggler i {
+  color: var(--text-primary);
+}
+
+
+
+
+
 
 
 

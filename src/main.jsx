@@ -13,6 +13,7 @@ import './styles/about.css'
 import './styles/certificates.css'
 import './styles/projects.css'
 import './styles/contact.css'
+import './styles/footer.css'
 import 'animate.css'
 
 createRoot(document.getElementById('root')).render(

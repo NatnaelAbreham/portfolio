@@ -3,12 +3,19 @@
 ========================= */
 :root {
   /* Brand colors (never change with theme) */
-  --primary-color: #4f46e5;
-  --secondary-color: #7c3aed;
-  --accent-color: #10b981;
+--primary-color: #f59e0b;   /* amber gold */
+--secondary-color: #a07711; /* soft gold */
+--accent-color: #7c3aed;    /* emerald */
+--third-color: #1187cc;
+
+
+
+
+
+
 
   /* Light theme */
-  --bg-main: #e9edf1;
+  --bg-main: #fbf9fc;
   --card-bg: #ffffff;
 
   --text-primary: #1f2937;
@@ -16,11 +23,25 @@
 
   --border-subtle: rgba(0, 0, 0, 0.08);
   --tag-bg: rgba(0, 0, 0, 0.06);
+
+ /*  --hero-bg-base: linear-gradient(135deg, #a8d0e6, #fefefe); */ /* light sky */
+ --hero-bg-base: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+
+  --hero-bg-layer1: rgba(255, 255, 255, 0.15);
+  --hero-bg-layer2: rgba(255, 255, 255, 0.05);
+  --hero-overlay: rgba(255, 255, 255, 0.85); /* navbar-safe overlay */
+  --star-color: rgba(255, 255, 255, 0.8);
+
+   --nav-toggle-color: #000000; /* light mode (dark hero bg) */
 }
+
+
+
 
 /* Dark theme */
 [data-theme="dark"] {
-  --bg-main: #0b0d10;
+   --bg-main: #111418; 
+/*   --bg-main: linear-gradient(135deg, #0f2027, #203a43, #2c5364); */
   --card-bg: #111418;
 
   --text-primary: #ffffff;
@@ -28,6 +49,27 @@
 
   --border-subtle: rgba(255, 255, 255, 0.1);
   --tag-bg: rgba(255, 255, 255, 0.12);
+
+
+   --hero-bg-base: linear-gradient(135deg, #0f172a, #1e293b, #334155); /* dark night sky */
+  --hero-bg-layer1: rgba(255, 255, 255, 0.1);
+  --hero-bg-layer2: rgba(255, 255, 255, 0.03);
+  --hero-overlay: rgba(0, 0, 0, 0.55);
+  --star-color: rgba(255, 255, 255, 0.7);
+
+  --nav-toggle-color: #ffffff;
+}
+
+
+/* Light theme glass */
+:root .hero-glass {
+  background: rgba(255, 255, 255, 0.14);
+}
+
+/* Dark theme glass */
+[data-theme="dark"] .hero-glass {
+  background: rgba(0, 0, 0, 0.062);
+  border: 1px solid rgba(248, 248, 248, 0.15);
 }
 
 /* [data-theme="dark"] .navbar {
@@ -118,6 +160,23 @@ body {
     90deg,
     var(--primary-color),
     var(--secondary-color)
+  );
+  border: none;
+  color: #ffffff;
+
+  padding: 12px 30px;
+  border-radius: 30px;
+
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+
+.btn-secondary-custom {
+  background: linear-gradient(
+    90deg,
+    var(--third-color),
+    var(--accent-color)
   );
   border: none;
   color: #ffffff;
