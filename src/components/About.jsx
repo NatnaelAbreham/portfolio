@@ -1,3 +1,6 @@
+
+import '../styles/about.css'
+
 const About = () => {
   return (
     <section id="about" className="section-padding about-section">

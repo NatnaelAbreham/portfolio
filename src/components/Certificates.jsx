@@ -1,3 +1,5 @@
+import '../styles/certificates.css'
+
 const Certificates = () => {
   const certificates = [
     {

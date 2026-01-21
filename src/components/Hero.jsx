@@ -1,5 +1,5 @@
 import profile from '../assets/profile.jpg'
-
+import '../styles/custom.css'
 const Hero = () => {
   return (
     <section id="home" className="hero-section">

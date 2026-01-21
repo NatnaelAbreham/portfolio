@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { motion } from "framer-motion";
-/* import "../styles/projects.css"; */
+import "../styles/projects.css"; 
 
 const projectsData = [
   {
