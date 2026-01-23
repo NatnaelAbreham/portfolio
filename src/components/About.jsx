@@ -5,9 +5,14 @@ const About = () => {
   return (
     <section id="about" className="section-padding about-section">
       <div className="container">
-        <h2 className="section-title text-center mb-5">
-          About Me
-        </h2>
+         <div className="section-header">
+                 <h2 className="section-title">About Me</h2>
+<h3 className="section-subtitle">
+  Turning complex ideas into real-world software
+</h3>
+         </div>
+ 
+
 
         <div className="row align-items-center gy-5">
           {/* LEFT — TIMELINE */}
@@ -48,7 +53,7 @@ const About = () => {
           <div className="col-lg-6">
             <div className="about-content" data-animate>
               <h3 className="gradient-text mb-4">
-                Turning complex ideas into real-world software
+                 Crafting software that transforms ideas into real impact
               </h3>
 
               <p className="lead">

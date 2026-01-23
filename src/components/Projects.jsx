@@ -1,6 +1,9 @@
 import React, { useState } from "react";
 import { motion } from "framer-motion";
 import "../styles/projects.css"; 
+import a from "../assets/a.png"
+import b from "../assets/b.png"
+import c from "../assets/c.png"
 
 const projectsData = [
   {
@@ -9,7 +12,7 @@ const projectsData = [
     description:
       "Advanced calculator supporting scientific functions and complex equations.",
     tech: ["C#", ".NET", "WinForms"],
-    image: "/images/calculator.jpg",
+    image: a,
   },
   {
     title: "Age Calculator",
@@ -17,7 +20,7 @@ const projectsData = [
     description:
       "Modern age calculator supporting Ethiopian and Gregorian calendars.",
     tech: ["React", "CSS", "JavaScript"],
-    image: "/images/age-calculator.jpg",
+    image: b,
   },
   {
     title: "Puzzle Game",
@@ -25,7 +28,7 @@ const projectsData = [
     description:
       "Interactive puzzle game with multiple levels and increasing difficulty.",
     tech: ["C#", ".NET"],
-    image: "/images/puzzle.jpg",
+    image: c,
   },
   {
     title: "Hotel Management System",
@@ -33,7 +36,7 @@ const projectsData = [
     description:
       "Complete hotel system handling reservations, billing, and reports.",
     tech: ["C#", "SQL Server"],
-    image: "/images/hotel.jpg",
+    image: a,
   },
 ];
 
