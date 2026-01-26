@@ -1,0 +1,186 @@
+
+
+
+
+/* =========================
+   CERTIFICATE CARD
+========================= */
+.certificate-card {
+  background: var(--card-bg);
+  border-radius: 20px;
+  padding: 32px;
+  height: 100%;
+  border: 1px solid var(--border-subtle);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.1);
+  position: relative;
+  overflow: hidden;
+}
+
+.certificate-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+.certificate-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.12);
+  border-color: var(--primary-color-light);
+}
+
+.certificate-card:hover::before {
+  opacity: 1;
+}
+
+/* =========================
+   CERTIFICATE HEADER & ICONS
+========================= */
+
+
+
+/* Ensure logo visibility */
+.certificate-header {
+  background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+}
+
+
+/* =========================
+   CERTIFICATE CONTENT
+========================= */
+.certificate-title {
+  font-size: 1.3rem;
+  font-weight: 700;
+  margin-bottom: 10px;
+  line-height: 1.4;
+  color: var(--text-primary);
+}
+
+.certificate-meta {
+  font-size: 0.95rem;
+  color: var(--text-secondary);
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.certificate-meta::before {
+  content: '•';
+  color: var(--primary-color);
+  font-weight: bold;
+}
+
+/* =========================
+   CERTIFICATE LINK
+========================= */
+.certificate-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 600;
+  color: var(--primary-color);
+  text-decoration: none;
+  padding: 10px 0;
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+.certificate-link::after {
+  content: '';
+  position: absolute;
+  bottom: 8px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: var(--primary-color);
+  transition: width 0.3s ease;
+}
+
+.certificate-link:hover {
+  color: var(--secondary-color);
+  gap: 12px;
+}
+
+.certificate-link:hover::after {
+  width: 100%;
+}
+
+.certificate-link i {
+  font-size: 0.9rem;
+  transition: transform 0.3s ease;
+}
+
+.certificate-link:hover i {
+  transform: translate(3px, -3px);
+}
+
+/* freeCodeCamp fixed size, left-aligned */
+.freecodecamp-logo {
+  width: 15%;
+  height: auto;
+  display: block;
+  object-fit: contain;
+  border-radius: 12px;
+  margin-left: 0; /* left align */
+}
+
+/* Udacity flexible size, left-aligned */
+.udacity-logo {
+  width: clamp(50%, 20%, 40%);
+  height: auto;
+  display: block;
+  object-fit: contain;
+  border-radius: 12px;
+  margin-left: 0; /* left align */
+}
+
+
+/* Optional hover effect for card */
+.certificate-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 25px 45px rgba(0, 0, 0, 0.18);
+}
+
+/* =========================
+   RESPONSIVE DESIGN
+========================= */
+@media (max-width: 768px) {
+  .certificates-section {
+    padding: 60px 0;
+  }
+  
+  .section-title {
+    font-size: 2rem;
+  }
+  
+  .certificate-card {
+    padding: 24px;
+  }
+  
+  .certificate-header {
+    width: 50px;
+    height: 50px;
+  }
+  
+  .certificate-header svg {
+    width: 24px;
+    height: 24px;
+  }
+}
+
+@media (max-width: 576px) {
+  .section-title {
+    font-size: 1.75rem;
+  }
+  
+  .certificate-title {
+    font-size: 1.1rem;
+  }
+}

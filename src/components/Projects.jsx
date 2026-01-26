@@ -60,10 +60,12 @@ const Projects = () => {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
         >
-          <h2 className="projects-title">Featured Projects</h2>
-          <p className="projects-subtitle">
+          <div className="section-header">
+          <h2 className="section-title">Featured Projects</h2>
+          <p className="section-subtitle">
             A selection of projects that highlight my skills and experience.
           </p>
+          </div>
         </motion.div>
 
         {/* Filters */}

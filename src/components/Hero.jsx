@@ -7,6 +7,7 @@ const Hero = () => {
   <div className="hero-layers">
     <div className="hero-layer"></div>
     <div className="hero-layer"></div>
+    
   </div>
 
   {/* Stars */}
@@ -16,9 +17,9 @@ const Hero = () => {
   <div className="container">
     <div className="row align-items-center min-vh-100">
       <div className="col-lg-6">
-  <div className="hero-glass">
+  <div className="">
 
-        <h4 className="text-uppercase text-warning mb-6">Hello, I'm</h4>
+        <h4 className="text-uppercase mb-6">Hello, I'm</h4>
         <h1 className="display-4 fw-bold mb-4">Natanel Abraham</h1>
         <h2 className="display-8 mb-4">
           <span className="gradient-text">Full Stack Developer</span>

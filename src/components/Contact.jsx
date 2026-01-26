@@ -13,11 +13,15 @@ const Contact = () => {
           transition={{ duration: 0.8 }}
           className="text-center mb-5"
         >
-          <h2 className="contact-title">Let’s Work Together</h2>
-          <p className="contact-subtitle">
+         
+
+               <div className="section-header">
+   <h2 className="section-title">Let’s Work Together</h2>
+          <p className="section-subtitle">
             Have a project in mind or just want to say hello?  
             Fill out the form and I’ll get back to you shortly.
           </p>
+</div>
         </motion.div>
 
         <div className="row g-4">

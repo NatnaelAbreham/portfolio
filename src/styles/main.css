@@ -32,6 +32,11 @@ html, body, #root {
 
   --hero-bg-layer1: rgba(255, 255, 255, 0.15);
   --hero-bg-layer2: rgba(255, 255, 255, 0.05);
+  
+
+
+
+   
   --hero-overlay: rgba(255, 255, 255, 0.85); /* navbar-safe overlay */
   --star-color: rgba(255, 255, 255, 0.8);
 

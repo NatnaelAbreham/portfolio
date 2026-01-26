@@ -1,6 +1,9 @@
 import { useState, useEffect } from 'react'
 import { initScrollAnimations } from './utils/animation.js'
 
+import AOS from 'aos';
+import 'aos/dist/aos.css';
+
 import Navbar from './components/Navbar'
 import Hero from './components/Hero'
 import Skills from './components/Skills'
@@ -11,6 +14,11 @@ import Contact from './components/Contact.jsx'
 import Footer from './components/Footer.jsx'
 
 function App() {
+  AOS.init({
+  duration: 1000,
+  once: true,
+  offset: 100,
+});
   const [theme, setTheme] = useState(() => {
     return localStorage.getItem('theme') || 'light'
   })
