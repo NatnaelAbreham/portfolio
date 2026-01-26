@@ -41,18 +41,69 @@
 .navbar .navbar-brand {
   font-size: 1.25rem; /* instead of fs-3 / 1.75rem */
 }
-.navbar .nav-link {
+
+
+
+
+
+
+/* Navbar link animated underline  and background*/
+/* .navbar .nav-link {
+  position: relative;        
+  color: var(--text-primary);
+  text-decoration: none;
+  transition: color 0.3s ease;
   padding: 0.25rem 0.5rem;
-  font-size: 0.9rem;
 }
 
+.navbar .nav-link::after {
+  content: '';
+  position: absolute;
+  bottom: 0;                 
+  left: 0;
+  width: 0%;                
+  height: 2px;              
+  background-color: var(--primary-color);
+  transition: width 0.3s ease;
+}
+
+.navbar .nav-link:hover::after {
+  width: 100%;               
+}
+
+.navbar .nav-link:hover {
+  color: var(--primary-color); 
+} */
 
 
 
+/* Navbar link animated underline only */
+.navbar .nav-link {
+  position: relative;       /* needed for the pseudo-element */
+  color: var(--text-primary); /* text color stays unchanged */
+  text-decoration: none;
+  padding: 0.25rem 0.5rem;
+}
 
+.navbar .nav-link::after {
+  content: '';
+  position: absolute;
+  bottom: 0;                 /* underline at bottom of link */
+  left: 0;
+  width: 0%;                 /* start hidden */
+  height: 2px;               /* thickness of underline */
+  background-color: var(--primary-color); /* underline color */
+  transition: width 0.3s ease; /* smooth animation */
+}
 
+.navbar .nav-link:hover::after {
+  width: 100%;               /* animate underline to full width */
+}
 
-
+/* Optional: keep text color the same */
+.navbar .nav-link:hover {
+  color: var(--text-primary);
+}
 
 
 
