@@ -22,7 +22,7 @@ const Navbar = ({ toggleTheme, theme }) => {
           }
         });
       },
-      { threshold: 0.6 } // 60% of section must be visible
+      { threshold: 0.6 } //60% of section must be visible
     );
 
     sections.forEach(section => observer.observe(section));
@@ -33,7 +33,7 @@ const Navbar = ({ toggleTheme, theme }) => {
     };
   }, []);
 
-  const navItems = ['Home', 'About', 'Skills', 'Projects', 'Certificates', 'Contact'];
+  const navItems = ['Home', 'About', 'Skills', 'Projects', 'Certificates','Order', 'Contact'];
 
   return (
     <nav className={`navbar navbar-expand-lg fixed-top navbar-dark ${scrolled ? 'navbar-scrolled' : ''}`}>

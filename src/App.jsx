@@ -12,6 +12,7 @@ import Certificates from './components/Certificates.jsx'
 import Projects from './components/Projects.jsx'
 import Contact from './components/Contact.jsx'
 import Footer from './components/Footer.jsx'
+import Order from './components/Order.jsx';
 
 function App() {
   AOS.init({
@@ -58,7 +59,9 @@ function App() {
       <Skills />
       <Certificates />
       <Projects />
+      <Order />
       <Contact />
+      
      <Footer />
     </div>
   )
