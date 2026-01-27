@@ -105,6 +105,10 @@
   color: var(--text-primary);
 }
 
+/* Change nav link text to primary color when active */
+.navbar .nav-link.active {
+  color: var(--primary-color) !important;
+}
 
 
 

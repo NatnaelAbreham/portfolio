@@ -28,7 +28,18 @@ const Certificates = () => {
     },
     {
       id: 3,
-      title: 'Programming Fundamentals & Android Development',
+      title: ' Android Development',
+      issuer: 'Udacity',
+      date: 'June 2022',
+      link: '#',
+      icon: UdacityLogo,
+      color: 'linear-gradient(135deg, #ffffff, #ffffff)',
+      border:'2px solid cyan',
+      badge: 'Intermediate'
+    },
+    {
+      id: 4,
+      title: 'Programming Fundamentals  ',
       issuer: 'Udacity',
       date: 'June 2022',
       link: '#',
