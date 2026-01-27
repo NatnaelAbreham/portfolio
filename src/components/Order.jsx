@@ -1,17 +1,21 @@
 import React, { useState } from "react";
 import "../styles/order.css";
-import { FaStar, FaExternalLinkAlt, FaSearch } from "react-icons/fa";
+import { FaStar, FaExternalLinkAlt, FaSearch, FaBriefcase, FaGraduationCap, FaLaptopCode, FaGlobe, FaChartLine } from "react-icons/fa";
 import { SiFiverr, SiUpwork, SiFreelancer } from "react-icons/si";
 
 const Order = () => {
   const [selectedPlatform, setSelectedPlatform] = useState("all");
   const [searchQuery, setSearchQuery] = useState("");
 
-  // Shared description, tags, and features
   const sharedDescription = "Develop website, mobile and desktop applications";
   const sharedFeatures = ["Responsive Design", "SEO Optimized", "Fast Performance", "Clean Code"];
-  const sharedTags = ["Business", "Portfolio", "Education", "Portal", "SaaS"];
-
+  const sharedTags = [
+    { name: "Business", icon: <FaBriefcase /> },
+    { name: "Portfolio", icon: <FaGlobe /> },
+    { name: "Education", icon: <FaGraduationCap /> },
+    { name: "Portal", icon: <FaLaptopCode /> },
+    { name: "SaaS", icon: <FaChartLine /> }
+  ];
 
   const platforms = [
     {
@@ -25,7 +29,8 @@ const Order = () => {
       link: "https://www.fiverr.com/yourprofile",
       tags: sharedTags,
       description: sharedDescription,
-      features: sharedFeatures
+      features: sharedFeatures,
+      badge: "Popular"
     },
     {
       id: "upwork",
@@ -38,7 +43,8 @@ const Order = () => {
       link: "https://www.upwork.com/freelancers/yourprofile",
       tags: sharedTags,
       description: sharedDescription,
-      features: sharedFeatures
+      features: sharedFeatures,
+      badge: "New"
     },
     {
       id: "freelancer",
@@ -51,17 +57,17 @@ const Order = () => {
       link: "https://www.freelancer.com/u/yourprofile",
       tags: sharedTags,
       description: sharedDescription,
-      features: sharedFeatures
+      features: sharedFeatures,
+      badge: "Hot"
     }
   ];
 
-  // Filter gigs
   const filteredPlatforms = platforms.filter(platform => {
     if (selectedPlatform !== "all" && platform.id !== selectedPlatform) return false;
     if (!searchQuery) return true;
     return (
       platform.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
-      platform.tags.some(tag => tag.toLowerCase().includes(searchQuery.toLowerCase()))
+      platform.tags.some(tag => tag.name.toLowerCase().includes(searchQuery.toLowerCase()))
     );
   });
 
@@ -90,7 +96,6 @@ const Order = () => {
               />
             </div>
           </div>
-
           <div className="col-md-8 d-flex flex-wrap gap-2 justify-content-md-end">
             <button
               className={`btn ${selectedPlatform === "all" ? "btn-primary" : "btn-outline-secondary"}`}
@@ -116,6 +121,10 @@ const Order = () => {
           {filteredPlatforms.map(platform => (
             <div key={platform.id} className="col-12 col-md-6 col-lg-4">
               <div className="card gig-card h-100">
+                
+                {/* Badge */}
+                {platform.badge && <div className="gig-badge">{platform.badge}</div>}
+
                 <div className="card-body d-flex flex-column">
 
                   {/* Header */}
@@ -144,9 +153,13 @@ const Order = () => {
                     {platform.features.map((f, i) => <li key={i}>{f}</li>)}
                   </ul>
 
-                  {/* Tags under features */}
+                  {/* Tags with icons */}
                   <div className="gig-tags mb-3">
-                    {platform.tags.map((tag, i) => <span key={i} className="gig-tag">{tag}</span>)}
+                    {platform.tags.map((tag, i) => (
+                      <span key={i} className="gig-tag">
+                        {tag.icon} <span className="tag-name">{tag.name}</span>
+                      </span>
+                    ))}
                   </div>
 
                   {/* CTA */}
