@@ -45,9 +45,13 @@ html, body, #root {
 
 /* Dark theme */
 [data-theme="dark"] {
-   --bg-main: #111418; 
+ /*   
+ --bg-main: #090f16;  
+ --card-bg: #111418;
+ */
+   --bg-main: #09121b; 
 /*   --bg-main: linear-gradient(135deg, #0f2027, #203a43, #2c5364); */
-  --card-bg: #111418;
+  --card-bg: #121a24;
 
   --text-primary: #ffffff;
   --text-secondary: rgba(255, 255, 255, 0.65);
