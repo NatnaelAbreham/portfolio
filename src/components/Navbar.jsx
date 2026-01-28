@@ -33,7 +33,7 @@ const Navbar = ({ toggleTheme, theme }) => {
     };
   }, []);
 
-  const navItems = ['Home', 'About', 'Skills', 'Projects', 'Certificates','Order', 'Contact'];
+  const navItems = [ 'About', 'Skills', 'Projects', 'Certificates','Order', 'Contact'];
 
   return (
     <nav className={`navbar navbar-expand-lg fixed-top navbar-dark ${scrolled ? 'navbar-scrolled' : ''}`}>

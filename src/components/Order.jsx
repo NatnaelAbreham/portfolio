@@ -7,7 +7,7 @@ const Order = () => {
   const [selectedPlatform, setSelectedPlatform] = useState("all");
   const [searchQuery, setSearchQuery] = useState("");
 
-  const sharedDescription = "Develop website, mobile and desktop applications";
+  const sharedDescription = "Develop and maintain website, mobile and desktop applications";
   const sharedFeatures = ["Responsive Design", "SEO Optimized", "Fast Performance", "Clean Code"];
   const sharedTags = [
     { name: "Business", icon: <FaBriefcase /> },
@@ -26,11 +26,11 @@ const Order = () => {
       gradient: "linear-gradient(90deg,#1DBF73,#17a85f)",
       rating: 5,
       price: "From $10",
-      link: "https://www.fiverr.com/yourprofile",
+      link: "https://www.fiverr.com/natnaelcodes",
       tags: sharedTags,
       description: sharedDescription,
       features: sharedFeatures,
-      badge: "Popular"
+      badge: "Order Now"
     },
     {
       id: "upwork",
@@ -40,11 +40,11 @@ const Order = () => {
       gradient: "linear-gradient(90deg,#6FDA44,#4caf2e)",
       rating: 5,
       price: "From $10",
-      link: "https://www.upwork.com/freelancers/yourprofile",
+      link: "https://www.upwork.com/freelancers/~015d3bc095a88008db?mp_source=share",
       tags: sharedTags,
       description: sharedDescription,
       features: sharedFeatures,
-      badge: "New"
+      badge: "Order Now"
     },
     {
       id: "freelancer",
@@ -54,11 +54,11 @@ const Order = () => {
       gradient: "linear-gradient(90deg,#29B2FE,#0088ff)",
       rating: 5,
       price: "From $10",
-      link: "https://www.freelancer.com/u/yourprofile",
+      link: "https://www.freelancer.com/u/nattytech?frm=nattytech&sb=t",
       tags: sharedTags,
       description: sharedDescription,
       features: sharedFeatures,
-      badge: "Hot"
+      badge: "Order Now"
     }
   ];
 
@@ -142,7 +142,7 @@ const Order = () => {
                       ))}
                       <span className="ms-2 small">{platform.rating}</span>
                     </div>
-                    <div className="gig-price">{platform.price}</div>
+                    <div className="gig-price gradient-text">{platform.price}</div>
                   </div>
 
                   {/* Short Description */}
