@@ -85,20 +85,26 @@ const Order = () => {
         {/* Search & Filter */}
         <div className="row mb-4 align-items-center g-2">
           <div className="col-md-4">
-            <div className="input-group">
-              <span className="input-group-text bg-white border-end-0"><FaSearch /></span>
-              <input
-                type="text"
-                className="form-control border-start-0"
-                placeholder="Search services or skills..."
-                value={searchQuery}
-                onChange={(e) => setSearchQuery(e.target.value)}
-              />
-            </div>
+          
+
+            <div className="input-group search-group">
+  <span className="input-group-text">
+    <FaSearch />
+  </span>
+
+  <input
+    type="text"
+    className="form-control"
+    placeholder="Search services or skills..."
+    value={searchQuery}
+    onChange={(e) => setSearchQuery(e.target.value)}
+  />
+</div>
+
           </div>
           <div className="col-md-8 d-flex flex-wrap gap-2 justify-content-md-end">
             <button
-              className={`btn ${selectedPlatform === "all" ? "btn-primary" : "btn-outline-secondary"}`}
+              className={`btn ${selectedPlatform === "all" ? "btn-success" : "btn-outline-secondary"}`}
               onClick={() => setSelectedPlatform("all")}
             >
               All Platforms

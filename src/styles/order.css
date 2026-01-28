@@ -196,7 +196,7 @@
   padding: 0.65rem 1.3rem;
   font-weight: 700;
   color: #fff;
-  background: linear-gradient(90deg, var(--primary-color), var(--primary-color));
+  background: linear-gradient(90deg, var(--secondary-color), var(--primary-color));
   border: none;
   box-shadow: 0 12px 30px rgba(245,158,11,0.35);
   transition: all 0.35s ease;
@@ -230,6 +230,50 @@
   transform: translateY(-2px) scale(1.05);
   box-shadow: 0 6px 18px rgba(0, 0, 0, 0.25);
 }
+
+
+/* Search input group */
+.search-group {
+  max-width: 520px;
+
+  border-radius: 999px;
+  overflow: hidden;
+  background: var(--card-bg);
+  border: 1px solid var(--border-subtle);
+  transition: all 0.3s ease;
+  backdrop-filter: blur(10px);
+}
+
+/* Icon */
+.search-group .input-group-text {
+  background: transparent;
+  border: none;
+  color: var(--text-secondary);
+  padding-left: 1rem;
+  font-size: 1rem;
+}
+
+/* Input */
+.search-group .form-control {
+  background: transparent;
+  border: none;
+  color: var(--text-primary);
+  padding: 0.75rem 1rem;
+  box-shadow: none;
+}
+
+.search-group .form-control::placeholder {
+  color: var(--text-secondary);
+  opacity: 0.7;
+}
+
+/* Focus state */
+.search-group:focus-within {
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 3px rgba(245, 158, 11, 0.25); /* amber glow */
+}
+
+
 
 
 /* Responsive */
