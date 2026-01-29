@@ -3,7 +3,7 @@ import '../styles/certificates.css';
 import { MicrosoftLogo } from '../icons/MicrosoftLogo';
 import UdacityLogo from '../assets/udacity.jpg';
 import freeCodeCampLogo from '../assets/freecodecamplogo.jpg';
-import MicrosoftCSharpPDF from '../assets/certificates/UI.pdf';
+import MicrosoftCSharpPDF from '../assets/certificates/UI.png';
 import React, { useState } from 'react';
 
 const Certificates = () => {
@@ -183,12 +183,14 @@ const [activePdf, setActivePdf] = useState(null);
         &times;
       </button>
 
-      <iframe
-        src={activePdf}
-        title="Certificate Preview"
-        width="100%"
-        height="100%"
-      />
+      <img
+  src={activePdf}
+  alt="Certificate Preview"
+  className="certificate-modal-image"
+  onContextMenu={(e) => e.preventDefault()} // disables right-click
+  draggable={false} // disables drag
+/>
+
     </div>
   </div>
 )}

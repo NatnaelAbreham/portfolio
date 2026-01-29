@@ -164,82 +164,133 @@
   color: var(--primary-color);
 }
 
+
+
+
 /* =========================
-   CERTIFICATE LINK
+   Certificate Modal Overlay
 ========================= */
-.certificate-link {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  font-weight: 600;
-  color: var(--primary-color);
-  text-decoration: none;
-  padding: 10px 0;
-  transition: all 0.3s ease;
-  position: relative;
-  margin-top: auto; /* Push to bottom */
-}
-
-.certificate-link::after {
-  content: '';
-  position: absolute;
-  bottom: 8px;
-  left: 0;
-  width: 0;
-  height: 2px;
-  background: var(--primary-color);
-  transition: width 0.3s ease;
-}
-
-.certificate-link:hover {
-  color: var(--secondary-color);
-  gap: 12px;
-}
-
-.certificate-link:hover::after {
-  width: 50%;
-}
-
-.certificate-link i {
-  font-size: 0.9rem;
-  transition: transform 0.3s ease;
-}
-
-.certificate-link:hover i {
-  transform: translate(3px, -3px);
-}
-
-
 .certificate-modal-overlay {
   position: fixed;
   inset: 0;
-  background: rgba(0, 0, 0, 0.75);
-  z-index: 9999;
+  background: rgba(0, 0, 0, 0.75);        /* slightly darker for focus */
+  backdrop-filter: blur(6px);             /* modern glass blur */
   display: flex;
-  align-items: center;
   justify-content: center;
+  align-items: center;
+  z-index: 9999;
+  padding: 1rem;
+  animation: fadeIn 0.35s ease forwards;  /* smooth fade-in */
 }
 
+/* =========================
+   Modal Container
+========================= */
 .certificate-modal {
-  width: 90%;
-  max-width: 900px;
-  height: 85vh;
-  background: #fff;
-  border-radius: 16px;
-  overflow: hidden;
   position: relative;
+  max-width: 90vw;      /* fit within viewport width */
+  max-height: 90vh;     /* fit within viewport height */
+  width: auto;
+  height: auto;
+  padding: 1rem;
+  background: linear-gradient(135deg, #ffffff, #f3f3f3);  /* soft gradient */
+  border-radius: 22px;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.35);            /* floating effect */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;     /* no scroll, image scales to fit */
+  transform: scale(0.95);
+  animation: scaleIn 0.3s ease forwards;
+  transition: all 0.3s ease;
 }
 
+/* =========================
+   Certificate Image
+========================= */
+.certificate-modal-image {
+  max-width: 100%;
+  max-height: 100%;
+  width: auto;
+  height: auto;
+  object-fit: contain;          /* entire image visible */
+  user-select: none;
+  pointer-events: none;
+  border-radius: 14px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.25);  /* subtle floating */
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.certificate-modal-image:hover {
+  transform: scale(1.03);       /* subtle zoom for desktop */
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.35);
+}
+
+/* =========================
+   Close Button
+========================= */
 .modal-close {
   position: absolute;
   top: 12px;
-  right: 16px;
-  font-size: 28px;
-  background: none;
+  right: 15px;
+  font-size: 30px;
+  background: rgba(255, 255, 255, 0.85);
   border: none;
+  border-radius: 50%;
+  width: 42px;
+  height: 42px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   cursor: pointer;
   z-index: 10;
+  color: #333;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+  transition: all 0.25s ease;
 }
+
+.modal-close:hover {
+  background: #f59e0b;   /* brand color highlight */
+  color: #fff;
+  transform: rotate(90deg) scale(1.15);
+}
+
+/* =========================
+   Animations
+========================= */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes scaleIn {
+  from { transform: scale(0.95); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}
+
+/* =========================
+   Mobile Optimization
+========================= */
+@media (max-width: 600px) {
+  .certificate-modal {
+    max-width: 95vw;
+    max-height: 80vh;
+    border-radius: 18px;
+    padding: 0.5rem;
+  }
+
+  .certificate-modal-image {
+    max-width: 100%;
+    max-height: 100%;
+  }
+
+  .modal-close {
+    width: 36px;
+    height: 36px;
+    font-size: 24px;
+  }
+}
+
 
 
 
