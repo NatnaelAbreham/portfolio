@@ -9,6 +9,8 @@ import React, { useState } from 'react';
 const Certificates = () => {
   const [showModal, setShowModal] = useState(false);
 const [activePdf, setActivePdf] = useState(null);
+const [rotation, setRotation] = useState(0); // rotation in degrees
+
 
   const certificates = [
    /*  {
@@ -136,15 +138,16 @@ const [activePdf, setActivePdf] = useState(null);
 
 {cert.type === 'pdf' && (
   <button
-    className="certificate-link"
-    onClick={() => {
-      setActivePdf(cert.file);
-      setShowModal(true);
-    }}
-  >
-    View Certificate
-    <i className="bi bi-eye"></i>
-  </button>
+  className="certificate-link modal-trigger"
+  onClick={() => {
+    setActivePdf(cert.file);
+    setShowModal(true);
+  }}
+>
+  View Certificate
+  <i className="bi bi-eye"></i>
+</button>
+
 )}
 
 
@@ -170,12 +173,16 @@ const [activePdf, setActivePdf] = useState(null);
         </div>
       </div>
 
-      {showModal && (
-  <div className="certificate-modal-overlay" onClick={() => setShowModal(false)}>
+{showModal && (
+  <div
+    className="certificate-modal-overlay"
+    onClick={() => setShowModal(false)}
+  >
     <div
       className="certificate-modal"
       onClick={(e) => e.stopPropagation()}
     >
+      {/* Close Button */}
       <button
         className="modal-close"
         onClick={() => setShowModal(false)}
@@ -183,17 +190,35 @@ const [activePdf, setActivePdf] = useState(null);
         &times;
       </button>
 
-      <img
-  src={activePdf}
-  alt="Certificate Preview"
-  className="certificate-modal-image"
-  onContextMenu={(e) => e.preventDefault()} // disables right-click
-  draggable={false} // disables drag
-/>
+      {/* Rotate Controls */}
+      <div className="certificate-modal-controls">
+        <button
+          className="rotate-btn"
+          onClick={() => setRotation((prev) => prev - 90)}
+        >
+          ⟲
+        </button>
+        <button
+          className="rotate-btn"
+          onClick={() => setRotation((prev) => prev + 90)}
+        >
+          ⟳
+        </button>
+      </div>
 
+      {/* Certificate Image */}
+      <img
+        src={activePdf}
+        alt="Certificate Preview"
+        className="certificate-modal-image"
+        style={{ transform: `rotate(${rotation}deg)` }}
+        onContextMenu={(e) => e.preventDefault()} // disables right-click
+        draggable={false} // disables drag
+      />
     </div>
   </div>
 )}
+
 
 
 

@@ -37,6 +37,9 @@
   opacity: 1;
 }
 
+
+
+
 /* =========================
    CERTIFICATE HEADER - FULL WIDTH LOGO BACKGROUND
 ========================= */
@@ -251,6 +254,120 @@
   background: #f59e0b;   /* brand color highlight */
   color: #fff;
   transform: rotate(90deg) scale(1.15);
+}
+
+
+/* =========================
+   CERTIFICATE LINK
+========================= */
+.certificate-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 600;
+  color: var(--primary-color);
+  text-decoration: none;
+  padding: 10px 0;
+  transition: all 0.3s ease;
+  position: relative;
+  margin-top: auto; /* Push to bottom */
+}
+
+.certificate-link::after {
+  content: '';
+  position: absolute;
+  bottom: 8px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: var(--primary-color);
+  transition: width 0.3s ease;
+}
+
+.certificate-link:hover {
+  color: var(--secondary-color);
+  gap: 12px;
+}
+
+.certificate-link:hover::after {
+  width: 40%;
+}
+
+.certificate-link i {
+  font-size: 0.9rem;
+  transition: transform 0.3s ease;
+}
+
+.certificate-link:hover i {
+  transform: translate(3px, -3px);
+}
+/*
+******************************
+Rotation*/
+
+.certificate-modal-controls {
+  position: absolute;
+  top: 12px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 10px;
+  z-index: 11;
+}
+
+.rotate-btn {
+  background: rgba(255, 255, 255, 0.85);
+  border: none;
+  border-radius: 50%;
+  width: 36px;
+  height: 36px;
+  font-size: 18px;
+  cursor: pointer;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  transition: all 0.2s ease;
+}
+
+.rotate-btn:hover {
+  background: var(--primary-color);
+  color: #fff;
+  transform: scale(1.15);
+}
+
+.certificate-modal-image {
+  transition: transform 0.3s ease; /* smooth rotation */
+}
+
+
+
+
+
+
+
+.certificate-link.modal-trigger {
+  background: none;        /* remove button background */
+  border: none;            /* remove border */
+  padding: 0;              /* remove padding */
+  font: inherit;           /* use same font as text */
+  cursor: pointer;         /* pointer on hover */
+  color: var(--primary-color);          /* same color as text */
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;                /* space between text and icon */
+}
+
+.certificate-link.modal-trigger::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 0%;
+  height: 2px;
+  background-color: var(--primary-color);
+  transition: width 0.3s ease;
+}
+
+.certificate-link.modal-trigger:hover::after {
+  width: 40%;
 }
 
 /* =========================
