@@ -1,12 +1,17 @@
-import React from 'react';
+
 import '../styles/certificates.css';
 import { MicrosoftLogo } from '../icons/MicrosoftLogo';
 import UdacityLogo from '../assets/udacity.jpg';
 import freeCodeCampLogo from '../assets/freecodecamplogo.jpg';
+import MicrosoftCSharpPDF from '../assets/certificates/UI.pdf';
+import React, { useState } from 'react';
 
 const Certificates = () => {
+  const [showModal, setShowModal] = useState(false);
+const [activePdf, setActivePdf] = useState(null);
+
   const certificates = [
-    {
+   /*  {
       id: 1,
       title: 'Microsoft Certified: C# Developer',
       issuer: 'Microsoft',
@@ -15,13 +20,25 @@ const Certificates = () => {
       icon: <MicrosoftLogo />,
       color: 'linear-gradient(135deg, #060404, #0664b0)',
       badge: 'Professional'
-    },
+    }, */
+    {
+    id: 1,
+    title: 'Microsoft Certified: C# Developer',
+    issuer: 'Microsoft',
+    date: 'August 2024',
+    type: 'pdf',
+    file: MicrosoftCSharpPDF,
+    icon: <MicrosoftLogo />,
+    color: 'linear-gradient(135deg, #060404, #0664b0)',
+    badge: 'Professional'
+  },
     {
       id: 2,
       title: 'Responsive Web Design Certification',
       issuer: 'freeCodeCamp',
-      date: 'December 2023',
-      link: '#',
+      date: 'February 27, 2025',
+      type: 'link',
+      link: 'https://freecodecamp.org/certification/fcc7d389d15-8fce-4922-baaa-9e978e349a13/responsive-web-design',
       icon: freeCodeCampLogo,
       color: 'linear-gradient(135deg, #0a0a23, #3b3b4f)',
       badge: 'Expert'
@@ -30,19 +47,24 @@ const Certificates = () => {
       id: 3,
       title: ' Android Development',
       issuer: 'Udacity',
-      date: 'June 2022',
-      link: '#',
+      date: 'September 1, 2024',
+      type: 'link',
+      link: 'http://www.udacity.com/certificate/e/8acbdaa6-62cf-11ef-9bfe-e3aca069aa02',
       icon: UdacityLogo,
       color: 'linear-gradient(135deg, #ffffff, #ffffff)',
       border:'2px solid cyan',
       badge: 'Intermediate'
     },
+
+
+    
     {
       id: 4,
       title: 'Programming Fundamentals  ',
       issuer: 'Udacity',
-      date: 'June 2022',
-      link: '#',
+      date: 'August 25, 2024',
+      type: 'link',
+      link: 'http://www.udacity.com/certificate/e/ae256ce2-5d52-11ef-9b12-f301b3dd5329',
       icon: UdacityLogo,
       color: 'linear-gradient(135deg, #ffffff, #ffffff)',
       border:'2px solid cyan',
@@ -100,15 +122,32 @@ const Certificates = () => {
       {cert.issuer}
     </p>
     
-    <a
-      href={cert.link}
-      target="_blank"
-      rel="noopener noreferrer"
-      className="certificate-link"
-    >
-      View Credential
-      <i className="bi bi-arrow-up-right"></i>
-    </a>
+   {cert.type === 'link' && (
+  <a
+    href={cert.link}
+    target="_blank"
+    rel="noopener noreferrer"
+    className="certificate-link"
+  >
+    View Credential
+    <i className="bi bi-arrow-up-right"></i>
+  </a>
+)}
+
+{cert.type === 'pdf' && (
+  <button
+    className="certificate-link"
+    onClick={() => {
+      setActivePdf(cert.file);
+      setShowModal(true);
+    }}
+  >
+    View Certificate
+    <i className="bi bi-eye"></i>
+  </button>
+)}
+
+
   </div>
 </div>
             </div>
@@ -130,6 +169,32 @@ const Certificates = () => {
           </a>
         </div>
       </div>
+
+      {showModal && (
+  <div className="certificate-modal-overlay" onClick={() => setShowModal(false)}>
+    <div
+      className="certificate-modal"
+      onClick={(e) => e.stopPropagation()}
+    >
+      <button
+        className="modal-close"
+        onClick={() => setShowModal(false)}
+      >
+        &times;
+      </button>
+
+      <iframe
+        src={activePdf}
+        title="Certificate Preview"
+        width="100%"
+        height="100%"
+      />
+    </div>
+  </div>
+)}
+
+
+
     </section>
   );
 };

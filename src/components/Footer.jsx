@@ -2,6 +2,7 @@ import React from "react";
 import { FaGithub, FaLinkedin, FaTwitter, FaEnvelope } from "react-icons/fa";
 import '../styles/footer.css'
 
+
 const Footer = () => {
   return (
     <footer className="portfolio-footer">
