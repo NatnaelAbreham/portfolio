@@ -188,38 +188,36 @@
 ========================= */
 .certificate-modal {
   position: relative;
-  max-width: 90vw;      /* fit within viewport width */
-  max-height: 90vh;     /* fit within viewport height */
-  width: auto;
-  height: auto;
+  max-width: 95vw;    /* never exceed viewport width */
+  max-height: 95vh;   /* never exceed viewport height */
+  width: auto;        /* auto width based on content */
+  height: auto;       /* auto height based on content */
   padding: 1rem;
-  background: linear-gradient(135deg, #ffffff, #f3f3f3);  /* soft gradient */
+  background: linear-gradient(135deg, #ffffff, #f3f3f3);
   border-radius: 22px;
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.35);            /* floating effect */
-  display: flex;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.35);
+  display: inline-flex;       /* important for auto-sizing */
   justify-content: center;
   align-items: center;
-  overflow: hidden;     /* no scroll, image scales to fit */
+  overflow: hidden;
   transform: scale(0.95);
   animation: scaleIn 0.3s ease forwards;
-  transition: all 0.3s ease;
 }
+
 
 /* =========================
    Certificate Image
 ========================= */
 .certificate-modal-image {
-  max-width: 100%;
-  max-height: 100%;
+  max-width: 95vw;    /* scales down if wider than viewport */
+  max-height: 95vh;   /* scales down if taller than viewport */
   width: auto;
   height: auto;
-  object-fit: contain;          /* entire image visible */
-  user-select: none;
-  pointer-events: none;
+  object-fit: contain;
   border-radius: 14px;
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.25);  /* subtle floating */
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.25);
 }
+
 
 .certificate-modal-image:hover {
   transform: scale(1.03);       /* subtle zoom for desktop */
