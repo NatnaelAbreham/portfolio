@@ -5,8 +5,12 @@ import "../styles/navbar.css";
 const Navbar = ({ toggleTheme, theme }) => {
   const [hidden, setHidden] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
+  const [activeSection, setActiveSection] = useState("home");
   const lastScroll = useRef(0);
 
+  const navItems = ["About", "Skills", "Projects", "Certificates", "Order", "Contact"];
+
+  // Scroll hide navbar
   useEffect(() => {
     const onScroll = () => {
       const current = window.scrollY;
@@ -17,13 +21,23 @@ const Navbar = ({ toggleTheme, theme }) => {
         setHidden(false);
       }
       lastScroll.current = current;
+
+      // Detect active section
+      navItems.forEach((item) => {
+        const el = document.getElementById(item.toLowerCase());
+        if (el) {
+          const top = el.offsetTop - 150; // adjust for navbar height
+          const bottom = top + el.offsetHeight;
+          if (current >= top && current < bottom) {
+            setActiveSection(item.toLowerCase());
+          }
+        }
+      });
     };
 
     window.addEventListener("scroll", onScroll);
     return () => window.removeEventListener("scroll", onScroll);
-  }, []);
-
-  const navItems = ["About", "Skills", "Projects", "Certificates", "Order", "Contact"];
+  }, [navItems]);
 
   return (
     <nav className={`floating-navbar ${hidden ? "hide" : ""}`}>
@@ -35,9 +49,14 @@ const Navbar = ({ toggleTheme, theme }) => {
 
         {/* Desktop */}
         <ul className="nav-links desktop">
-          {navItems.map(item => (
+          {navItems.map((item) => (
             <li key={item}>
-              <a href={`#${item.toLowerCase()}`}>{item}</a>
+              <a
+                href={`#${item.toLowerCase()}`}
+                className={activeSection === item.toLowerCase() ? "active" : ""}
+              >
+                {item}
+              </a>
             </li>
           ))}
         </ul>
@@ -60,10 +79,11 @@ const Navbar = ({ toggleTheme, theme }) => {
 
       {/* Mobile dropdown */}
       <div className={`mobile-menu ${menuOpen ? "show" : ""}`}>
-        {navItems.map(item => (
+        {navItems.map((item) => (
           <a
             key={item}
             href={`#${item.toLowerCase()}`}
+            className={activeSection === item.toLowerCase() ? "active" : ""}
             onClick={() => setMenuOpen(false)}
           >
             {item}
