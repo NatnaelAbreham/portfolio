@@ -1,48 +1,35 @@
-import profile from '../assets/profile.jpg'
-import '../styles/custom.css'
+import profile from "../assets/profile.jpg";
+import "../styles/hero.css";
+
 const Hero = () => {
   return (
-    <section id="home" className="hero-section">
-  {/* 3D Layers */}
-  <div className="hero-layers">
-    <div className="hero-layer"></div>
-    <div className="hero-layer"></div>
-    
-  </div>
+    <section id="home" className="hero">
+      {/* 3D background layers */}
+      <div className="hero-bg">
+        <span className="orb orb-1" />
+        <span className="orb orb-2" />
+        <span className="orb orb-3" />
+      </div>
 
-  {/* Stars */}
-  <div className="hero-stars"></div>
+      <div className="hero-glass">
+        <div className="hero-text">
+          <h4>Hello, I’m</h4>
+          <h1>Natanel Abraham</h1>
+          <h2 className="gradient-text">Full Stack Developer</h2>
+          <p>I design and build modern, fast and visually powerful web experiences.</p>
 
-  {/* Hero content */}
-  <div className="container">
-    <div className="row align-items-center min-vh-100">
-      <div className="col-lg-6">
-  <div className="">
+          <div className="hero-actions">
+            <a href="#contact" className="btn-primary">Get In Touch</a>
+            <a href="#projects" className="btn-outline">View Work</a>
+          </div>
+        </div>
 
-        <h4 className="text-uppercase mb-6">Hello, I'm</h4>
-        <h1 className="display-4 fw-bold mb-4">Natanel Abraham</h1>
-        <h2 className="display-8 mb-4">
-          <span className="gradient-text">Full Stack Developer</span>
-        </h2>
-        <p className="lead mb-5">
-          I create beautiful, functional websites and applications with modern technologies.
-        </p>
-        <div className="d-flex flex-wrap gap-3">
-          <a href="#contact" className="btn btn-primary-custom">Get In Touch</a>
-          <a href="#projects" className="btn btn-secondary-custom">View My Work</a>
+        <div className="hero-image">
+          <img src={profile} alt="profile" />
         </div>
       </div>
-      </div>
-      <div className="col-lg-6 text-center">
-        <div className="profile-wrapper">
-          <img src={profile} alt="Profile" className="img-fluid rounded-circle shadow-lg profile-img"/>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
+    </section>
+  );
+};
 
-  )
-}
-
-export default Hero
+export default Hero;

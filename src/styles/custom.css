@@ -41,42 +41,6 @@
 .navbar .navbar-brand {
   font-size: 1.25rem; /* instead of fs-3 / 1.75rem */
 }
-
-
-
-
-
-
-/* Navbar link animated underline  and background*/
-/* .navbar .nav-link {
-  position: relative;        
-  color: var(--text-primary);
-  text-decoration: none;
-  transition: color 0.3s ease;
-  padding: 0.25rem 0.5rem;
-}
-
-.navbar .nav-link::after {
-  content: '';
-  position: absolute;
-  bottom: 0;                 
-  left: 0;
-  width: 0%;                
-  height: 2px;              
-  background-color: var(--primary-color);
-  transition: width 0.3s ease;
-}
-
-.navbar .nav-link:hover::after {
-  width: 100%;               
-}
-
-.navbar .nav-link:hover {
-  color: var(--primary-color); 
-} */
-
-
-
 /* Navbar link animated underline only */
 .navbar .nav-link {
   position: relative;       /* needed for the pseudo-element */
