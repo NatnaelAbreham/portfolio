@@ -4,18 +4,18 @@ import "../styles/navbar.css";
 
 const Navbar = ({ toggleTheme, theme }) => {
   const [hidden, setHidden] = useState(false);
+  const [menuOpen, setMenuOpen] = useState(false);
   const lastScroll = useRef(0);
 
   useEffect(() => {
     const onScroll = () => {
       const current = window.scrollY;
-
       if (current > lastScroll.current && current > 120) {
         setHidden(true);
+        setMenuOpen(false);
       } else {
         setHidden(false);
       }
-
       lastScroll.current = current;
     };
 
@@ -33,7 +33,8 @@ const Navbar = ({ toggleTheme, theme }) => {
           <span>atty</span>
         </a>
 
-        <ul className="nav-links">
+        {/* Desktop */}
+        <ul className="nav-links desktop">
           {navItems.map(item => (
             <li key={item}>
               <a href={`#${item.toLowerCase()}`}>{item}</a>
@@ -41,9 +42,33 @@ const Navbar = ({ toggleTheme, theme }) => {
           ))}
         </ul>
 
-        <button className="theme-toggle" onClick={toggleTheme}>
-          <i className={`bi ${theme === "light" ? "bi-moon" : "bi-sun"}`} />
-        </button>
+        {/* Actions */}
+        <div className="nav-actions">
+          <button className="theme-toggle" onClick={toggleTheme}>
+            <i className={`bi ${theme === "light" ? "bi-moon" : "bi-sun"}`} />
+          </button>
+
+          {/* Arrow toggle (mobile) */}
+          <button
+            className={`menu-arrow ${menuOpen ? "open" : ""}`}
+            onClick={() => setMenuOpen(!menuOpen)}
+          >
+            <i className="bi bi-chevron-down" />
+          </button>
+        </div>
+      </div>
+
+      {/* Mobile dropdown */}
+      <div className={`mobile-menu ${menuOpen ? "show" : ""}`}>
+        {navItems.map(item => (
+          <a
+            key={item}
+            href={`#${item.toLowerCase()}`}
+            onClick={() => setMenuOpen(false)}
+          >
+            {item}
+          </a>
+        ))}
       </div>
     </nav>
   );
