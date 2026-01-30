@@ -157,20 +157,22 @@ const [rotation, setRotation] = useState(0); // rotation in degrees
           ))}
         </div>
         
-        <div className="text-center mt-5" data-aos="fade-up" data-aos-delay="400">
-          <a 
-            href="#contact" 
-            className="btn btn-primary btn-lg px-5 py-3 rounded-pill"
-            style={{
-              background: 'linear-gradient(135deg, var(--primary-color), var(--secondary-color))',
-              border: 'none',
-              fontWeight: '600'
-            }}
-          >
-            <i className="bi bi-download me-2"></i>
-            Download All Certificates
-          </a>
-        </div>
+        <div
+  className="text-center mt-5"
+  data-aos="fade-up"
+  data-aos-delay="400"
+>
+  <a
+    href="https://github.com/NatnaelAbreham"
+    target="_blank"
+    rel="noopener noreferrer"
+    className="modern-cta-btn"
+  >
+    <i className="bi bi-github"></i>
+    <span>Explore My Projects</span>
+    <i className="bi bi-arrow-right-short arrow"></i>
+  </a>
+</div>
       </div>
 
 {showModal && (
