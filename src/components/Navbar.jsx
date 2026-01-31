@@ -8,7 +8,7 @@ const Navbar = ({ toggleTheme, theme }) => {
   const [activeSection, setActiveSection] = useState("home");
   const lastScroll = useRef(0);
 
-  const navItems = ["About", "Skills", "Projects", "Certificates", "Order", "Contact"];
+  const navItems = ["Home", "About", "Skills", "Projects", "Certificates", "Order", "Contact"];
 
   // Scroll hide navbar
   useEffect(() => {
@@ -44,22 +44,24 @@ const Navbar = ({ toggleTheme, theme }) => {
       <div className="nav-glass">
         <a href="#home" className="brand">
           <img src={logo} alt="logo" />
-          <span>atty</span>
+          {/* <span class  = "text-warning">atty</span> */}
         </a>
 
         {/* Desktop */}
         <ul className="nav-links desktop">
-          {navItems.map((item) => (
-            <li key={item}>
-              <a
-                href={`#${item.toLowerCase()}`}
-                className={activeSection === item.toLowerCase() ? "active" : ""}
-              >
-                {item}
-              </a>
-            </li>
-          ))}
-        </ul>
+  {navItems
+    .filter(item => item !== "Home")
+    .map(item => (
+      <li key={item}>
+        <a
+          href={`#${item.toLowerCase()}`}
+          className={activeSection === item.toLowerCase() ? "active" : ""}
+        >
+          {item}
+        </a>
+      </li>
+    ))}
+</ul>
 
         {/* Actions */}
         <div className="nav-actions">
@@ -79,17 +81,19 @@ const Navbar = ({ toggleTheme, theme }) => {
 
       {/* Mobile dropdown */}
       <div className={`mobile-menu ${menuOpen ? "show" : ""}`}>
-        {navItems.map((item) => (
-          <a
-            key={item}
-            href={`#${item.toLowerCase()}`}
-            className={activeSection === item.toLowerCase() ? "active" : ""}
-            onClick={() => setMenuOpen(false)}
-          >
-            {item}
-          </a>
-        ))}
-      </div>
+  {navItems
+    .filter(item => item !== "Home")
+    .map(item => (
+      <a
+        key={item}
+        href={`#${item.toLowerCase()}`}
+        className={activeSection === item.toLowerCase() ? "active" : ""}
+        onClick={() => setMenuOpen(false)}
+      >
+        {item}
+      </a>
+    ))}
+</div>
     </nav>
   );
 };
