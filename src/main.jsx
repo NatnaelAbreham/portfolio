@@ -7,7 +7,7 @@ import 'bootstrap-icons/font/bootstrap-icons.css'
 import './styles/main.css' 
 import 'animate.css'
 
-import Order from './components/Order.jsx'
+import Order from './components/Projects.jsx'
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
