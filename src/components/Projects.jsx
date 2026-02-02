@@ -2,10 +2,17 @@ import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { X, ChevronLeft, ChevronRight } from "lucide-react";
 import "../styles/projects.css";
+import useIsMobile from "./IsMobile";
 
 import a from "../assets/a.png";
 import b from "../assets/b.png";
 import c from "../assets/c.png";
+
+
+import c1 from "../assets/car/one.png";
+import c2 from "../assets/car/two.png";
+import c3 from "../assets/car/three.png";
+import c4 from "../assets/car/four.png";
 
 /* =========================
    Data
@@ -25,14 +32,14 @@ const projectsData = [
   },
   {
     id: 2,
-    title: "Age Calculator",
+    title: "Vehicle Marketplace Platform",
     category: "Web",
     description:
-      "Modern age calculator supporting Ethiopian and Gregorian calendars.",
-    tech: ["React", "CSS", "JavaScript"],
-    images: [b, c],
+      "A modern and responsive car buy and sell website.  ",
+    tech: ["React", "CSS", "JavaScript", "Bootstrap", "MySQL", "PHP"],
+    images: [c1, c2, c3,c4],
     details:
-      "A web-based application that calculates age differences between different calendar systems.",
+      "A modern and responsive car buy and sell website designed to provide a seamless vehicle marketplace experience. The platform allows users to browse, search, and list vehicles with detailed specifications, pricing, and high-quality visuals. Built with a clean UI, dark mode support, smooth transitions, and mobile-first responsiveness, the website ensures excellent usability across all devices. Ideal for dealerships, individual sellers, and automotive marketplaces looking for a professional and scalable online presence.",
   },
   {
     id: 3,
@@ -61,6 +68,7 @@ const cardMotion = {
 };
 
 export default function Projects() {
+  const isMobile = useIsMobile();
   const [active, setActive] = useState("All");
   const [selectedProject, setSelectedProject] = useState(null);
   const [modalIndex, setModalIndex] = useState(0);
