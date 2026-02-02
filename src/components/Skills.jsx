@@ -10,6 +10,8 @@ import {
   SiJavascript,
   SiTailwindcss,
   SiDotnet,
+  /* SiMicrosoftsqlserver, */
+  
 } from "react-icons/si";
 import {
   FaReact,
@@ -20,6 +22,8 @@ import {
   FaGithub,
   FaNodeJs,
   FaJava,
+  FaDatabase,
+  FaCheckCircle,
 } from "react-icons/fa";
 
 const Skills = () => {
@@ -44,7 +48,7 @@ const Skills = () => {
       subtitle: "Building robust server solutions",
       color: "#8b5cf6",
       skills: [
-        { name: ".NET", icon: <SiDotnet />, color: "#512BD4" },
+        { name: "C#", icon: <SiDotnet />, color: "#512BD4" },
         { name: "Node.js", icon: <FaNodeJs />, color: "#339933" },
         { name: "Java", icon: <FaJava />, color: "#007396" },
         { name: "PHP", icon: <SiPhp />, color: "#777BB4" },
@@ -58,6 +62,7 @@ const Skills = () => {
         { name: "PostgreSQL", icon: <SiPostgresql />, color: "#4169E1" },
         { name: "MySQL", icon: <SiMysql />, color: "#4479A1" },
         { name: "MongoDB", icon: <SiMongodb />, color: "#47A248" },
+        { name: "SQL Server", icon: <FaDatabase />, color: "#CC2927" },
       ],
     },
     {
@@ -71,6 +76,31 @@ const Skills = () => {
         { name: "Swagger", icon: <SiSwagger />, color: "#85EA2D" },
       ],
     },
+
+
+
+{
+  title: "System Design",
+  subtitle: "Designing scalable, secure systems",
+  color: "#22c55e",
+  skills: [
+    { name: "RESTful API Design", icon: <FaCheckCircle />, iconColor: "#22c55e",color: "#22c55e" },
+    { name: "Authentication & Authorization", icon: <FaCheckCircle />, iconColor: "#22c55e" ,color: "#22c55e" },
+    { name: "Layered Architecture", icon: <FaCheckCircle />, iconColor: "#22c55e" ,color: "#22c55e" },
+    { name: "Scalability & Reliability", icon: <FaCheckCircle />, iconColor: "#22c55e",color: "#22c55e"  },
+  ],
+},
+{
+  title: "Development Environment",
+  subtitle: "From local setup to production",
+  color: "#f97316",
+  skills: [
+    { name: "Environment Configuration", icon: <FaCheckCircle />, iconColor: "#22c55e" ,color: "#22c55e" },
+    { name: "Application Deployment", icon: <FaCheckCircle />, iconColor: "#22c55e" ,color: "#22c55e"  },
+    { name: "Debugging & Monitoring", icon: <FaCheckCircle />, iconColor: "#22c55e",color: "#22c55e"  },
+    { name: "Production Support", icon: <FaCheckCircle />, iconColor: "#22c55e",color: "#22c55e"  },
+  ],
+},
   ];
 
   useEffect(() => {
