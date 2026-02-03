@@ -220,7 +220,7 @@ export default function Projects() {
         </div>
 
         {/* Modal */}
-        <AnimatePresence>
+       {/*  <AnimatePresence>
           {selectedProject && (
             <>
               <motion.div
@@ -231,7 +231,46 @@ export default function Projects() {
                 onClick={closeModal}
               />
 
-              <motion.div
+              
+            </>
+          )}
+        </AnimatePresence> */}
+
+        <AnimatePresence>
+  {selectedProject && (
+    <>
+      {isMobile ? (
+        <motion.div
+          className="mobile-project-details"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          transition={{ duration: 0.3 }}
+        >
+          <div className="mobile-header">
+            <h3>{selectedProject.title}</h3>
+            <button onClick={closeModal}><X size={20} /></button>
+          </div>
+
+          <div className="mobile-content">
+            <img
+              src={selectedProject.images[modalIndex]}
+              alt={selectedProject.title}
+              className="mobile-main-image"
+            />
+
+            <p>{selectedProject.details}</p>
+
+            <div className="mobile-tech">
+              {selectedProject.tech.map((t) => (
+                <span key={t}>{t}</span>
+              ))}
+            </div>
+          </div>
+        </motion.div>
+      ) : (
+        // Current desktop modal
+       <motion.div
                 className="project-modal"
                 initial={{ opacity: 0, scale: 0.96 }}
                 animate={{ opacity: 1, scale: 1 }}
@@ -330,9 +369,10 @@ export default function Projects() {
                   </button>
                 </div>
               </motion.div>
-            </>
-          )}
-        </AnimatePresence>
+      )}
+    </>
+  )}
+</AnimatePresence>
       </div>
     </section>
   );
