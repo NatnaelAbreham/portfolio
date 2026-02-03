@@ -220,21 +220,7 @@ export default function Projects() {
         </div>
 
         {/* Modal */}
-       {/*  <AnimatePresence>
-          {selectedProject && (
-            <>
-              <motion.div
-                className="modal-overlay"
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                exit={{ opacity: 0 }}
-                onClick={closeModal}
-              />
-
-              
-            </>
-          )}
-        </AnimatePresence> */}
+      
 
         <AnimatePresence>
   {selectedProject && (
@@ -253,11 +239,23 @@ export default function Projects() {
           </div>
 
           <div className="mobile-content">
-            <img
+           {/*  <img
               src={selectedProject.images[modalIndex]}
               alt={selectedProject.title}
               className="mobile-main-image"
-            />
+            /> */}
+
+            <div className="mobile-image-carousel">
+  {selectedProject.images.map((img, i) => (
+    <img
+      key={i}
+      src={img}
+      alt=""
+      className="mobile-carousel-image"
+      onClick={() => setModalIndex(i)}
+    />
+  ))}
+</div>
 
             <p>{selectedProject.details}</p>
 

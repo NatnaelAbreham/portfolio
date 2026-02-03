@@ -385,6 +385,23 @@
   color: var(--primary-color);
 }
 
+.mobile-image-carousel {
+  display: flex;
+  gap: 12px;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+}
+
+.mobile-carousel-image {
+  min-width: 90%;
+  height: 260px;
+  object-fit: cover;
+  border-radius: 16px;
+  scroll-snap-align: center;
+  flex-shrink: 0;
+}
+
 /* Responsive */
 @media (max-width: 992px) {
   .modal-content { grid-template-columns: 1fr; }
