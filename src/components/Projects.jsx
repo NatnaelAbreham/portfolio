@@ -8,30 +8,47 @@ import a from "../assets/a.png";
 import b from "../assets/b.png";
 import c from "../assets/c.png";
 
+import dashboard1 from "../assets/dashboard/dashboard1.png";
+import dashboard2 from "../assets/dashboard/dashboard2.png";
 
 import c1 from "../assets/car/one.png";
 import c2 from "../assets/car/two.png";
 import c3 from "../assets/car/three.png";
 import c4 from "../assets/car/four.png";
 
+
+import fcy1 from "../assets/fcy/fcy1.png";
+import fcy2 from "../assets/fcy/fcy2.png";
+import fcy3 from "../assets/fcy/fcy3.png";
+import fcy4 from "../assets/fcy/fcy4.png";
+import fcy5 from "../assets/fcy/fcy5.png";
+import fcy6 from "../assets/fcy/fcy6.png";
+import fcy7 from "../assets/fcy/fcy7.png";
+import fcy8 from "../assets/fcy/fcy8.png";
+import fcy9 from "../assets/fcy/fcy9.png";
+import fcy10 from "../assets/fcy/fcy10.png";
+
+import form1 from "../assets/form/form1.png";
+import form2 from "../assets/form/form2.png";
+import form3 from "../assets/form/form3.png";
+import form4 from "../assets/form/form4.png";
+import form5 from "../assets/form/form5.png";
+import form6 from "../assets/form/form6.png";
+import form7 from "../assets/form/form7.png";
+import form8 from "../assets/form/form8.png";
+import form9 from "../assets/form/form9.png";
+import form10 from "../assets/form/form10.png";
+
+
+
 /* =========================
    Data
 ========================= */
 
 const projectsData = [
+  
   {
     id: 1,
-    title: "Scientific Calculator",
-    category: "Desktop",
-    description:
-      "Advanced calculator supporting scientific functions and complex equations.",
-    tech: ["C#", ".NET", "WinForms"],
-    images: [a, b, c],
-    details:
-      "This calculator features scientific notation, unit conversions, and a responsive UI.",
-  },
-  {
-    id: 2,
     title: "Vehicle Marketplace Platform",
     category: "Web",
     description:
@@ -41,7 +58,7 @@ const projectsData = [
     details:
       "A modern and responsive car buy and sell website designed to provide a seamless vehicle marketplace experience. The platform allows users to browse, search, and list vehicles with detailed specifications, pricing, and high-quality visuals. Built with a clean UI, dark mode support, smooth transitions, and mobile-first responsiveness, the website ensures excellent usability across all devices. Ideal for dealerships, individual sellers, and automotive marketplaces looking for a professional and scalable online presence.",
   },
-  {
+  /* {
     id: 3,
     title: "Puzzle Game",
     category: "Game",
@@ -51,6 +68,55 @@ const projectsData = [
     images: [c, a],
     details:
       "Engaging puzzle game with 50+ levels, power-ups, and global leaderboards.",
+  }, */
+ 
+  {
+    id: 2,
+    title: "Back-Office Utility Portal",
+    category: "Web",
+    tech: ["ASP.NET MVC", "Javascript", "Microsoft SQL Server", "RESTful API", "Bootstrap", "JQuery"],
+    description:
+      "used for file management, foreign currency transactions, and control management.",
+    images: [fcy1, fcy2, fcy3, fcy4, fcy5, fcy6, fcy7, fcy8, fcy9, fcy10],
+    details:
+      "The system supports multi-level approval workflows and role-based access control across branch, district, and head office levels. It is designed for comprehensive reporting, with the head office having dedicated roles such as Maker, Verifier, Approver, and Administrator, operating both directly and in synchronization with branches. The portal manages branch and currency information, daily exchange rates, and automatically calculates exchanged amounts and balances by integrating directly with the core banking system to produce sophisticated and reliable reports. It also includes issue tracking to ensure each branch operates only within its assigned district, and centralized link management for effective control and governance. The system integrates through BR Gateway, SOAP, and REST APIs, ensuring secure and reliable communication between services.",
+  },
+
+   {
+    id: 3,
+    title: "Dashboard",
+    category: "web",
+    description:
+      "Modern full featured and interactive dashboard for real-time analytics and management.",
+    tech: ["React.js", "Chart.js", "Javascript", "Tailwind CSS"],
+    images: [dashboard1, dashboard2],
+    details:
+      "Developed a modern business website featuring an interactive dashboard for real-time analytics and management. The system provides: Data visualization & reports: Track performance metrics, KPIs, and trends in real-time. User & role management: Admins can manage users, assign roles, and control access. Responsive interface: Works seamlessly on desktop and mobile devices. Performance monitoring: Monitor business operations with interactive charts and tables.",
+  },
+  
+   {
+    id: 4,
+    title: "Dynamic Form Builder",
+    category: "web",
+    description:
+      "Dynamic form creation and response management platform.",
+    tech: ["React.js", "Sql Server", "Asp.Net Core", "Tailwind CSS", "Rest API"],
+    images: [form10,form1, form2, form3, form4, form5, form6, form7, form8, form9],
+    details:
+      "Developed a dynamic form creation and response management platform. Allows administrators to create customizable forms, manage visibility, and review submissions through an intuitive dashboard. Provides a clean and user-friendly interface for users to fill out forms efficiently. Designed to streamline internal data collection and automate workflows for organizations. Designed for send single and Bulk SMS. Showcases full-stack development skills, clean architecture, and responsive UI design.",
+  },
+  
+
+  {
+    id: 4,
+    title: "Scientific Calculator",
+    category: "Desktop",
+    description:
+      "Advanced calculator supporting scientific functions and complex equations.",
+    tech: ["C#", ".NET", "WinForms"],
+    images: [a, b, c],
+    details:
+      "This calculator features scientific notation, unit conversions, and a responsive UI.",
   },
 ];
 
@@ -254,7 +320,8 @@ export default function Projects() {
                         <img
                           key={i}
                           src={img}
-                          alt=""
+                          alt = "" 
+                          loading="lazy"
                           className="mobile-carousel-image"
                           onClick={() => setModalIndex(i)}
                         />
@@ -306,7 +373,8 @@ export default function Projects() {
                       <div className="modal-gallery">
                         <img
                           src={selectedProject.images[modalIndex]}
-                          alt=""
+                          alt = "" 
+                          loading="lazy"
                           className="modal-main-image"
                         />
 
@@ -334,7 +402,8 @@ export default function Projects() {
                                   className={`thumbnail ${i === modalIndex ? "active" : ""
                                     }`}
                                   onClick={() => setModalIndex(i)}
-                                  alt=""
+                                  alt = "" 
+                                  loading="lazy"
                                 />
                               ))}
                             </div>

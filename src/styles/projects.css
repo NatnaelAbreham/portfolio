@@ -403,7 +403,9 @@
 }
 
 
-
+.mobile-carousel-image {
+  content-visibility: auto;
+}
 
 
 
