@@ -37,7 +37,7 @@ const projectsData = [
     description:
       "A modern and responsive car buy and sell website.  ",
     tech: ["React", "CSS", "JavaScript", "Bootstrap", "MySQL", "PHP"],
-    images: [c1, c2, c3,c4],
+    images: [c1, c2, c3, c4],
     details:
       "A modern and responsive car buy and sell website designed to provide a seamless vehicle marketplace experience. The platform allows users to browse, search, and list vehicles with detailed specifications, pricing, and high-quality visuals. Built with a clean UI, dark mode support, smooth transitions, and mobile-first responsiveness, the website ensures excellent usability across all devices. Ideal for dealerships, individual sellers, and automotive marketplaces looking for a professional and scalable online presence.",
   },
@@ -131,22 +131,22 @@ export default function Projects() {
 
         {/* Filters */}
         <div className="d-flex justify-content-center gap-2 flex-wrap mb-4">
-  {categories.map((cat) => (
-    <button
-      key={cat}
-      className={`filter-btn ${active === cat ? "active" : ""}`}
-      onClick={() => setActive(cat)}
-    >
-      {cat}
-    </button>
-  ))}
-</div>
+          {categories.map((cat) => (
+            <button
+              key={cat}
+              className={`filter-btn ${active === cat ? "active" : ""}`}
+              onClick={() => setActive(cat)}
+            >
+              {cat}
+            </button>
+          ))}
+        </div>
 
         {/* Grid (Bootstrap controlled) */}
         <div className="row g-4 justify-content-center">
           <AnimatePresence>
             {filteredProjects.map((project, idx) => {
-              const imgIdx = cardImageIndex[idx] || 0;
+              const imgIdx = isMobile ? 0 : (cardImageIndex[idx] || 0);
 
               return (
                 <motion.div
@@ -166,52 +166,56 @@ export default function Projects() {
                         alt={project.title}
                       />
 
-                      {project.images.length > 1 && (
-                        <>
-                          <div className="view-images-btn">
-                            View {project.images.length} Images
-                          </div>
+                      {!isMobile && project.images.length > 1 && (
+  <>
+    <div className="view-images-btn">
+      View {project.images.length} Images
+    </div>
 
-                          <div className="image-dots">
-                            {project.images.map((_, i) => (
-                              <span
-                                key={i}
-                                className={i === imgIdx ? "active" : ""}
-                                onClick={(e) => {
-                                  e.stopPropagation();
-                                  setCardImageIndex((prev) => ({
-                                    ...prev,
-                                    [idx]: i,
-                                  }));
-                                }}
-                              />
-                            ))}
-                          </div>
-                        </>
-                      )}
+    <div className="image-dots">
+      {project.images.map((_, i) => (
+        <span
+          key={i}
+          className={i === imgIdx ? "active" : ""}
+          onClick={(e) => {
+            e.stopPropagation();
+            setCardImageIndex((prev) => ({
+              ...prev,
+              [idx]: i,
+            }));
+          }}
+        />
+      ))}
+    </div>
+  </>
+)}
                     </div>
 
                     {/* Content */}
-                    <div className="project-content">
-                      <div className="project-header">
-                        <h5>{project.title}</h5>
-                        <span className="project-category">
-                          {project.category}
-                        </span>
-                      </div>
+                  <div className="project-content">
+  <div className="project-header">
+    <h5>{project.title}</h5>
+    <span className="project-category">
+      {project.category}
+    </span>
+  </div>
 
-                      <p>{project.description}</p>
+  {!isMobile && (
+    <>
+      <p>{project.description}</p>
 
-                      <div className="project-tech">
-                        {project.tech.map((t) => (
-                          <span key={t}>{t}</span>
-                        ))}
-                      </div>
+      <div className="project-tech">
+        {project.tech.map((t) => (
+          <span key={t}>{t}</span>
+        ))}
+      </div>
 
-                      <button className="view-project-btn">
-                        View Project Details
-                      </button>
-                    </div>
+     {/*  <button className="view-project-btn">
+        View Project Details
+      </button> */}
+    </>
+  )}
+</div>
                   </div>
                 </motion.div>
               );
@@ -220,157 +224,156 @@ export default function Projects() {
         </div>
 
         {/* Modal */}
-      
+
 
         <AnimatePresence>
-  {selectedProject && (
-    <>
-      {isMobile ? (
-        <motion.div
-          className="mobile-project-details"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          exit={{ opacity: 0 }}
-          transition={{ duration: 0.3 }}
-        >
-          <div className="mobile-header">
-            <h3>{selectedProject.title}</h3>
-            <button onClick={closeModal}><X size={20} /></button>
-          </div>
+          {selectedProject && (
+            <>
+              {isMobile ? (
+                <motion.div
+  className="mobile-project-details"
+  initial={{ y: "100%" }}
+  animate={{ y: 0 }}
+  exit={{ y: "100%" }}
+  transition={{ type: "spring", damping: 28, stiffness: 260 }}
+>
+                  <div className="mobile-header">
+                    <h3>{selectedProject.title}</h3>
+                    <button onClick={closeModal}><X size={20} /></button>
+                  </div>
 
-          <div className="mobile-content">
-           {/*  <img
+                  <div className="mobile-content">
+                    {/*  <img
               src={selectedProject.images[modalIndex]}
               alt={selectedProject.title}
               className="mobile-main-image"
             /> */}
 
-            <div className="mobile-image-carousel">
-  {selectedProject.images.map((img, i) => (
-    <img
-      key={i}
-      src={img}
-      alt=""
-      className="mobile-carousel-image"
-      onClick={() => setModalIndex(i)}
-    />
-  ))}
-</div>
-
-            <p>{selectedProject.details}</p>
-
-            <div className="mobile-tech">
-              {selectedProject.tech.map((t) => (
-                <span key={t}>{t}</span>
-              ))}
-            </div>
-          </div>
-        </motion.div>
-      ) : (
-        // Current desktop modal
-       <motion.div
-                className="project-modal"
-                initial={{ opacity: 0, scale: 0.96 }}
-                animate={{ opacity: 1, scale: 1 }}
-                exit={{ opacity: 0, scale: 0.96 }}
-                transition={{ duration: 0.3 }}
-                onClick={(e) => e.stopPropagation()}
-              >
-                {/* Header */}
-                <div className="modal-header">
-                  <div>
-                    <h3 className="modal-title">
-                      {selectedProject.title}
-                    </h3>
-                    <span className="modal-category">
-                      {selectedProject.category}
-                    </span>
-                  </div>
-
-                  <button
-                    className="modal-close"
-                    onClick={closeModal}
-                  >
-                    <X size={20} />
-                  </button>
-                </div>
-
-                {/* Body */}
-                <div className="modal-content-wrapper">
-                  <div className="modal-content">
-                    {/* Gallery */}
-                    <div className="modal-gallery">
-                      <img
-                        src={selectedProject.images[modalIndex]}
-                        alt=""
-                        className="modal-main-image"
-                      />
-
-                      {selectedProject.images.length > 1 && (
-                        <>
-                          <button
-                            className="nav-btn prev-btn"
-                            onClick={prevImage}
-                          >
-                            <ChevronLeft size={20} />
-                          </button>
-
-                          <button
-                            className="nav-btn next-btn"
-                            onClick={nextImage}
-                          >
-                            <ChevronRight size={20} />
-                          </button>
-
-                          <div className="thumbnail-container">
-                            {selectedProject.images.map((img, i) => (
-                              <img
-                                key={i}
-                                src={img}
-                                className={`thumbnail ${
-                                  i === modalIndex ? "active" : ""
-                                }`}
-                                onClick={() => setModalIndex(i)}
-                                alt=""
-                              />
-                            ))}
-                          </div>
-                        </>
-                      )}
+                    <div className="mobile-image-carousel">
+                      {selectedProject.images.map((img, i) => (
+                        <img
+                          key={i}
+                          src={img}
+                          alt=""
+                          className="mobile-carousel-image"
+                          onClick={() => setModalIndex(i)}
+                        />
+                      ))}
                     </div>
 
-                    {/* Details */}
-                    <div className="modal-details">
-                      <h4>Project Description</h4>
-                      <p>{selectedProject.details}</p>
+                    <p>{selectedProject.details}</p>
 
-                      <h4>Technologies Used</h4>
-                      <div className="modal-tech">
-                        {selectedProject.tech.map((t) => (
-                          <span key={t}>{t}</span>
-                        ))}
+                    <div className="mobile-tech">
+                      {selectedProject.tech.map((t) => (
+                        <span key={t}>{t}</span>
+                      ))}
+                    </div>
+                  </div>
+                </motion.div>
+              ) : (
+                // Current desktop modal
+                <motion.div
+                  className="project-modal"
+                  initial={{ opacity: 0, scale: 0.96 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  exit={{ opacity: 0, scale: 0.96 }}
+                  transition={{ duration: 0.3 }}
+                  onClick={(e) => e.stopPropagation()}
+                >
+                  {/* Header */}
+                  <div className="modal-header">
+                    <div>
+                      <h3 className="modal-title">
+                        {selectedProject.title}
+                      </h3>
+                      <span className="modal-category">
+                        {selectedProject.category}
+                      </span>
+                    </div>
+
+                    <button
+                      className="modal-close"
+                      onClick={closeModal}
+                    >
+                      <X size={20} />
+                    </button>
+                  </div>
+
+                  {/* Body */}
+                  <div className="modal-content-wrapper">
+                    <div className="modal-content">
+                      {/* Gallery */}
+                      <div className="modal-gallery">
+                        <img
+                          src={selectedProject.images[modalIndex]}
+                          alt=""
+                          className="modal-main-image"
+                        />
+
+                        {selectedProject.images.length > 1 && (
+                          <>
+                            <button
+                              className="nav-btn prev-btn"
+                              onClick={prevImage}
+                            >
+                              <ChevronLeft size={20} />
+                            </button>
+
+                            <button
+                              className="nav-btn next-btn"
+                              onClick={nextImage}
+                            >
+                              <ChevronRight size={20} />
+                            </button>
+
+                            <div className="thumbnail-container">
+                              {selectedProject.images.map((img, i) => (
+                                <img
+                                  key={i}
+                                  src={img}
+                                  className={`thumbnail ${i === modalIndex ? "active" : ""
+                                    }`}
+                                  onClick={() => setModalIndex(i)}
+                                  alt=""
+                                />
+                              ))}
+                            </div>
+                          </>
+                        )}
+                      </div>
+
+                      {/* Details */}
+                      <div className="modal-details">
+                        <h4>Project Description</h4>
+                        <p>{selectedProject.details}</p>
+
+                        <h4>Technologies Used</h4>
+                        <div className="modal-tech">
+                          {selectedProject.tech.map((t) => (
+                            <span key={t}>{t}</span>
+                          ))}
+                        </div>
                       </div>
                     </div>
                   </div>
-                </div>
 
-                {/* Footer */}
-                <div className="modal-footer">
-                  <button
-                    className="secondary-btn"
-                    onClick={closeModal}
-                  >
-                    Close
-                  </button>
-                  <button className="primary-btn">
-                    View Live Demo
-                  </button>
-                </div>
-              </motion.div>
-      )}
-    </>
-  )}
-</AnimatePresence>
+                  {/* Footer */}
+                  <div className="modal-footer">
+                    <button
+                      className="secondary-btn"
+                      onClick={closeModal}
+                    >
+                      Close
+                    </button>
+                    <button className="primary-btn">
+                      View Live Demo
+                    </button>
+                  </div>
+                </motion.div>
+              )}
+            </>
+          )}
+        </AnimatePresence>
       </div>
     </section>
   );

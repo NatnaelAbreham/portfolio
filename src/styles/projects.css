@@ -416,7 +416,14 @@
     left: 50%;
     transform: translate(-50%, -50%);
   }
-  
+  .project-card::after {
+    content: "Tap to view";
+    position: absolute;
+    bottom: 12px;
+    right: 12px;
+    font-size: 11px;
+    opacity: 0.6;
+  }
   .modal-content-wrapper {
     padding: 16px;
   }
