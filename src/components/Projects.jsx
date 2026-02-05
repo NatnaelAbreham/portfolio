@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+/* import React, { useState } from "react"; */
+import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { X, ChevronLeft, ChevronRight } from "lucide-react";
 import "../styles/projects.css";
@@ -39,7 +40,26 @@ import form8 from "../assets/form/form8.png";
 import form9 from "../assets/form/form9.png";
 import form10 from "../assets/form/form10.png";
 
+import portal1 from "../assets/portal/portal1.png";
+import portal2 from "../assets/portal/portal2.png";
+import portal3 from "../assets/portal/portal3.png";
+import portal4 from "../assets/portal/portal4.png";
+import portal5 from "../assets/portal/portal5.png";
 
+import portfolio1 from "../assets/portfolio/portfolio1.png";
+import portfolio2 from "../assets/portfolio/portfolio2.png";
+import portfolio3 from "../assets/portfolio/portfolio3.png";
+
+import calc1 from "../assets/calc/calc1.png";
+import calc2 from "../assets/calc/calc2.png";
+import calc3 from "../assets/calc/calc3.png";
+import calc4 from "../assets/calc/calc4.png";
+import calc5 from "../assets/calc/calc5.png";
+import calc6 from "../assets/calc/calc6.png";
+import calc7 from "../assets/calc/calc7.png";
+import calc8 from "../assets/calc/calc8.png";
+import calc9 from "../assets/calc/calc9.png";
+import calc10 from "../assets/calc/calc10.png";
 
 /* =========================
    Data
@@ -107,8 +127,46 @@ const projectsData = [
   },
   
 
+
   {
-    id: 4,
+    id: 5,
+    title: "Utility Management System",
+    category: "web",
+    description:
+      "A comprehensive banking utility system designed to streamline user management, branch/district operations, and reporting.",
+    tech: ["PHP", "Javascript", "JQuery", "Bootstrap", "MySQL"],
+    images: [portal1, portal2, portal3, portal4, portal5],
+    details:
+      "Key Features: Role & district-based access: Makers can modify only branches within their assigned districts. User & link management: Add, delete, and bookmark links by category; CSV import for bulk registration.Dynamic forms & file attachments: Flexible row adjustments and up to three files per entry (one mandatory letter).Graphical reports & dashboards: Visual cards and graphs for quick insights.User history & auditing: Track branch transfers, mobile banking access, and complete user activity.Live search & export options: Download reports in PDF, Excel, Word, or print directly.Admin controls: Lock/unlock users, manage access, and monitor system activity.Secure authentication: Email-based login and password reset for all users.This system demonstrates advanced backend logic, interactive UI, and real-world enterprise workflow, making it ideal for banks and large-scale organizations.",
+  },
+
+  {
+    id: 6,
+    title: "Personal Portfolio Website",
+    category: "web",
+    description:
+      "A modern and responsive personal portfolio website.",
+    tech: ["React.js", "Javascript", "CSS", "Tailwind CSS", "HTML"],
+    images: [portfolio1, portfolio2, portfolio3],
+    details:
+      "A modern and responsive personal portfolio website designed to showcase skills, projects, and professional experience. The site features a clean layout, clear visual hierarchy, smooth animations, and a mobile-first design. Built to highlight featured projects, technical expertise, and contact information, making it easy for clients and recruiters to understand value at a glance.", 
+    
+    },
+
+     {
+    id: 7,
+    title: "Custom Calculator",
+    category: "web",
+    description:
+      "Multi-functional custom calculator suite with advanced real-world applications:",
+    tech: ["React.js", "Javascript", "CSS", "Tailwind CSS", "HTML"],
+    images: [calc1, calc2, calc3, calc4, calc5, calc6, calc7, calc8, calc9, calc10],
+    details:
+      "Developed a multi-functional custom calculator suite with advanced real-world applications.", 
+    
+    },
+  {
+    id: 10,
     title: "Scientific Calculator",
     category: "Desktop",
     description:
@@ -134,17 +192,24 @@ const cardMotion = {
 };
 
 export default function Projects() {
+  const [showAll, setShowAll] = useState(false);
   const isMobile = useIsMobile();
   const [active, setActive] = useState("All");
   const [selectedProject, setSelectedProject] = useState(null);
   const [modalIndex, setModalIndex] = useState(0);
   const [cardImageIndex, setCardImageIndex] = useState({});
 
+  useEffect(() => {
+  setShowAll(false);
+}, [active]);
+
   const filteredProjects =
     active === "All"
       ? projectsData
       : projectsData.filter((p) => p.category === active);
-
+const visibleProjects = showAll
+  ? filteredProjects
+  : filteredProjects.slice(0, 3);
   /* =========================
      Modal helpers
   ========================= */
@@ -211,7 +276,7 @@ export default function Projects() {
         {/* Grid (Bootstrap controlled) */}
         <div className="row g-4 justify-content-center">
           <AnimatePresence>
-            {filteredProjects.map((project, idx) => {
+            {visibleProjects.map((project, idx) => {
               const imgIdx = isMobile ? 0 : (cardImageIndex[idx] || 0);
 
               return (
@@ -288,7 +353,16 @@ export default function Projects() {
             })}
           </AnimatePresence>
         </div>
-
+{filteredProjects.length > 3 && (
+  <div className="text-center mt-5">
+    <button
+      className="explore-btn"
+      onClick={() => setShowAll((prev) => !prev)}
+    >
+      {showAll ? "Show Less" : "Explore More Projects"}
+    </button>
+  </div>
+)}
         {/* Modal */}
 
 

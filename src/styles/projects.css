@@ -530,7 +530,22 @@
   color: white; /* stands out on primary background */
   filter: drop-shadow(0 0 2px rgba(0,0,0,0.6));
 }
+.explore-btn {
+  padding: 12px 28px;
+  border-radius: 999px;
+  background: var(--primary-color);
+  color: white;
+  font-weight: 600;
+  border: none;
+  cursor: pointer;
+  transition: transform 0.2s, box-shadow 0.3s, filter 0.3s;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
+}
 
+.explore-btn:hover {
+  transform: translateY(-2px);
+  filter: brightness(1.1);
+}
 
 
 
