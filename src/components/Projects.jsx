@@ -5,12 +5,14 @@ import { X, ChevronLeft, ChevronRight } from "lucide-react";
 import "../styles/projects.css";
 import useIsMobile from "./IsMobile";
 
-import a from "../assets/a.png";
-import b from "../assets/b.png";
-import c from "../assets/c.png";
+import desktop1 from "../assets/desktop/desktop1.png";
+import desktop2 from "../assets/desktop/desktop2.png";
 
 import dashboard1 from "../assets/dashboard/dashboard1.png";
 import dashboard2 from "../assets/dashboard/dashboard2.png";
+
+import automation1 from "../assets/automation/automation1.png";
+import automation2 from "../assets/automation/automation2.png";
 
 import c1 from "../assets/car/one.png";
 import c2 from "../assets/car/two.png";
@@ -60,6 +62,17 @@ import calc7 from "../assets/calc/calc7.png";
 import calc8 from "../assets/calc/calc8.png";
 import calc9 from "../assets/calc/calc9.png";
 import calc10 from "../assets/calc/calc10.png";
+
+import game1 from "../assets/game/game10.jpg";
+import game2 from "../assets/game/game2.jpg";
+import game3 from "../assets/game/game3.jpg";
+import game4 from "../assets/game/game4.jpg";
+import game5 from "../assets/game/game5.jpg";
+import game6 from "../assets/game/game6.jpg";
+import game7 from "../assets/game/game7.jpg";
+import game8 from "../assets/game/game8.jpg";
+import game9 from "../assets/game/game9.jpg";
+import game10 from "../assets/game/game1.jpg";
 
 /* =========================
    Data
@@ -165,20 +178,48 @@ const projectsData = [
       "Developed a multi-functional custom calculator suite with advanced real-world applications.", 
     
     },
+
+    {
+    id: 8,
+    title: "Communication Automation Tool",
+    category: "Business Tools",
+    description:
+      "Bulk Email and SMS Automation Tool",
+    tech: ["PHP", "React.js", "Javascript",  "Bootstrap"],
+    images: [automation2, automation1],
+    details:
+      "Developed a Bulk Email and SMS Automation Tool that allows users to send large-scale email and SMS campaigns efficiently using CSV-based recipient uploads. The system includes message preview functionality, real-time delivery progress tracking, and live status updates for sent, delivered, and failed emails.It supports automated processing, detailed delivery logs, and downloadable reports for audit and tracking purposes. The tool is designed for reliability, scalability, and ease of use, making it suitable for notifications, marketing campaigns, and system alerts.", 
+    
+    },
+
+     {
+    id: 9,
+    title: "Game Suite",
+    category: "Game",
+    description:
+      "collection of logic-based and educational games",
+    tech: ["C#", "Java", "PHP", "React.js", "Javascript",  "Bootstrap"],
+    images: [game1, game2, game3, game4, game5, game6, game7, game8, game9, game10],
+    details:
+      "Designed and developed a collection of logic-based AI mode and educational games focused on performance, clean UI, and reusable architecture.  Features include: Modular game engine structure, Dynamic scoring & rule-based logic, Responsive UI and state handling, Error handling and input validation.", 
+    
+    },
+
+
   {
     id: 10,
-    title: "Scientific Calculator",
+    title: "Desktop Application",
     category: "Desktop",
     description:
-      "Advanced calculator supporting scientific functions and complex equations.",
-    tech: ["C#", ".NET", "WinForms"],
-    images: [a, b, c],
+      "Desktop Dashboard & Admin Panel Apps with Real-time Analytics",
+    tech: ["C#", "Java GUI"],
+    images: [desktop1, desktop2],
     details:
-      "This calculator features scientific notation, unit conversions, and a responsive UI.",
+      "Multi-module desktop application with separate pages for management, reporting, and configuration. Multi-page desktop UI, CRUD operations, Data validation, Modular architecture, Performance optimization and User-friendly workflows",
   },
 ];
 
-const categories = ["All", "Web", "Desktop", "Game"];
+const categories = ["All", "Web", "Mobile","Desktop", "Game","Business Tools"];
 
 /* =========================
    Animations
