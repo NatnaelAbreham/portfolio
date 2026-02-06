@@ -3,33 +3,51 @@ import { motion } from "framer-motion";
 import { FaEnvelope, FaPhoneAlt, FaMapMarkerAlt } from "react-icons/fa";
 import "../styles/contact.css";
 
+const fadeUp = {
+  hidden: { opacity: 0, y: 40 },
+  visible: { opacity: 1, y: 0 },
+};
+
+const slideLeft = {
+  hidden: { opacity: 0, x: -40 },
+  visible: { opacity: 1, x: 0 },
+};
+
+const slideRight = {
+  hidden: { opacity: 0, x: 40 },
+  visible: { opacity: 1, x: 0 },
+};
+
 const Contact = () => {
   return (
-    <section id = "contact" className="contact-section">
+    <section id="contact" className="contact-section">
       <div className="container">
-        <motion.div
-          initial={{ opacity: 0, y: 40 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-          className="text-center mb-5"
-        >
-         
 
-               <div className="section-header">
-   <h2 className="section-title">Let’s Work Together</h2>
+        {/* Header */}
+        <motion.div
+          variants={fadeUp}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          transition={{ duration: 0.8 }}
+          className="section-header text-center"
+        >
+          <h2 className="section-title">Let’s Work Together</h2>
           <p className="section-subtitle">
             Have a project in mind or just want to say hello?  
-            Fill out the form and I’ll get back to you shortly.
+            Drop a message and I’ll get back to you.
           </p>
-</div>
         </motion.div>
 
-        <div className="row g-4">
-          {/* Contact Info */}
+        <div className="row g-4 align-items-stretch">
+
+          {/* Info Cards */}
           <motion.div
             className="col-md-4"
-            initial={{ opacity: 0, x: -40 }}
-            whileInView={{ opacity: 1, x: 0 }}
+            variants={slideLeft}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
             transition={{ duration: 0.6 }}
           >
             <div className="contact-info-card">
@@ -51,29 +69,44 @@ const Contact = () => {
             </div>
           </motion.div>
 
-          {/* Contact Form */}
+          {/* Form */}
           <motion.div
             className="col-md-8"
-            initial={{ opacity: 0, x: 40 }}
-            whileInView={{ opacity: 1, x: 0 }}
+            variants={slideRight}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
             transition={{ duration: 0.6 }}
           >
             <form className="contact-form">
               <div className="row">
                 <div className="col-md-6">
-                  <input type="text" placeholder="Your Name" required />
+                  <div className="floating-input">
+                    <input type="text" required />
+                    <label>Your Name</label>
+                  </div>
                 </div>
+
                 <div className="col-md-6">
-                  <input type="email" placeholder="Email Address" required />
+                  <div className="floating-input">
+                    <input type="email" required />
+                    <label>Email Address</label>
+                  </div>
                 </div>
               </div>
 
-              <input type="text" placeholder="Subject" required />
+              <div className="floating-input">
+                <input type="text" required />
+                <label>Subject</label>
+              </div>
 
-              <textarea rows="5" placeholder="Your Message" required></textarea>
+              <div className="floating-input">
+                <textarea rows="5" required></textarea>
+                <label>Your Message</label>
+              </div>
 
-              <button type="submit" className="btn contact-btn">
-                Send Message 
+              <button type="submit" className="contact-btn">
+                Send Message
               </button>
             </form>
           </motion.div>
