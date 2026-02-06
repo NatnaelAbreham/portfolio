@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { X, ChevronLeft, ChevronRight } from "lucide-react";
 import "../styles/projects.css";
+import "../styles/certificates.css";
 import useIsMobile from "./IsMobile";
 
 import desktop1 from "../assets/desktop/desktop1.png";
@@ -126,7 +127,7 @@ const projectsData = [
    {
     id: 3,
     title: "Dashboard",
-    category: "web",
+    category: "Web",
     description:
       "Modern full featured and interactive dashboard for real-time analytics and management.",
     tech: ["React.js", "Chart.js", "Javascript", "Tailwind CSS"],
@@ -138,7 +139,7 @@ const projectsData = [
    {
     id: 4,
     title: "Dynamic Form Builder",
-    category: "web",
+    category: "Web",
     description:
       "Dynamic form creation and response management platform.",
     tech: ["React.js", "Sql Server", "Asp.Net Core", "Tailwind CSS", "Rest API"],
@@ -149,22 +150,11 @@ const projectsData = [
   
 
 
+  
   {
     id: 5,
-    title: "Utility Management System",
-    category: "web",
-    description:
-      "A comprehensive banking utility system designed to streamline user management, branch/district operations, and reporting.",
-    tech: ["PHP", "Javascript", "JQuery", "Bootstrap", "MySQL"],
-    images: [portal1, portal2, portal3, portal4, portal5],
-    details:
-      "Key Features: Role & district-based access: Makers can modify only branches within their assigned districts. User & link management: Add, delete, and bookmark links by category; CSV import for bulk registration.Dynamic forms & file attachments: Flexible row adjustments and up to three files per entry (one mandatory letter).Graphical reports & dashboards: Visual cards and graphs for quick insights.User history & auditing: Track branch transfers, mobile banking access, and complete user activity.Live search & export options: Download reports in PDF, Excel, Word, or print directly.Admin controls: Lock/unlock users, manage access, and monitor system activity.Secure authentication: Email-based login and password reset for all users.This system demonstrates advanced backend logic, interactive UI, and real-world enterprise workflow, making it ideal for banks and large-scale organizations.",
-  },
-
-  {
-    id: 6,
     title: "Personal Portfolio Website",
-    category: "web",
+    category: "Web",
     description:
       "A modern and responsive personal portfolio website.",
     tech: ["React.js", "Javascript", "CSS", "Tailwind CSS", "HTML"],
@@ -175,18 +165,29 @@ const projectsData = [
     },
 
      {
-    id: 7,
-    title: "Custom Calculator",
-    category: "web",
+    id: 6,
+    title: "Payment Integration",
+    category: "Web",
     description:
-      "Multi-functional custom calculator suite with advanced real-world applications:",
-    tech: ["React.js", "Javascript", "CSS", "Tailwind CSS", "HTML"],
-    images: [calc1, calc2, calc3, calc4, calc5, calc6, calc7, calc8, calc9, calc10],
+      "Multi-Gateway Payment Integration",
+    tech: ["RESTful API", ".NET", "Json"],
+    images: [payment1, payment2, payment3],
     details:
-      "Developed a multi-functional custom calculator suite with advanced real-world applications.", 
-    
-    },
+      "Built a multi-gateway payment integration system that enables seamless processing across multiple payment providers. Includes secure API integration, transaction validation, error handling, and unified payment management.",
+  },
+{
+    id: 7,
+    title: "Utility Management System",
+    category: "Web",
+    description:
+      "A comprehensive banking utility system designed to streamline user management, branch/district operations, and reporting.",
+    tech: ["PHP", "Javascript", "JQuery", "Bootstrap", "MySQL"],
+    images: [portal1, portal2, portal3, portal4, portal5],
+    details:
+      "Key Features: Role & district-based access: Makers can modify only branches within their assigned districts. User & link management: Add, delete, and bookmark links by category; CSV import for bulk registration.Dynamic forms & file attachments: Flexible row adjustments and up to three files per entry (one mandatory letter).Graphical reports & dashboards: Visual cards and graphs for quick insights.User history & auditing: Track branch transfers, mobile banking access, and complete user activity.Live search & export options: Download reports in PDF, Excel, Word, or print directly.Admin controls: Lock/unlock users, manage access, and monitor system activity.Secure authentication: Email-based login and password reset for all users.This system demonstrates advanced backend logic, interactive UI, and real-world enterprise workflow, making it ideal for banks and large-scale organizations.",
+  },
 
+     
     {
     id: 8,
     title: "Communication Automation Tool",
@@ -237,18 +238,20 @@ const projectsData = [
     details:
       "Designed to handle both Ethiopian and Gregorian calendars seamlessly. Whether you need to convert dates between these systems, calculate exact age, or manage events across calendar types, this tool is built for precision and usability.tantly convert dates between Gregorian and Ethiopian calendar systems, including leap year handling and 13-month support for the Ethiopian calendar.",
   },
-
-   {
+{
     id: 12,
-    title: "Payment Integration",
-    category: "Web",
+    title: "Custom Calculator",
+    category: "web",
     description:
-      "Multi-Gateway Payment Integration",
-    tech: ["RESTful API", ".NET", "Json"],
-    images: [payment1, payment2, payment3],
+      "Multi-functional custom calculator suite with advanced real-world applications:",
+    tech: ["React.js", "Javascript", "CSS", "Tailwind CSS", "HTML"],
+    images: [calc1, calc2, calc3, calc4, calc5, calc6, calc7, calc8, calc9, calc10],
     details:
-      "Built a multi-gateway payment integration system that enables seamless processing across multiple payment providers. Includes secure API integration, transaction validation, error handling, and unified payment management.",
-  },
+      "Developed a multi-functional custom calculator suite with advanced real-world applications.", 
+    
+    },
+
+  
 ];
 
 const categories = ["All", "Web", "Mobile","Desktop", "Game","Business Tools"];
@@ -427,10 +430,11 @@ const visibleProjects = showAll
           </AnimatePresence>
         </div>
 {filteredProjects.length > 3 && (
-  <div className="text-center mt-5">
+  <div className="text-center mt-5" >
     <button
-      className="explore-btn"
+      className="modern-cta-btn"
       onClick={() => setShowAll((prev) => !prev)}
+      style = {{border: "none"}}
     >
       {showAll ? "Show Less" : "Explore More Projects"}
     </button>
