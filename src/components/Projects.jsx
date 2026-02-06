@@ -14,6 +14,9 @@ import dashboard2 from "../assets/dashboard/dashboard2.png";
 import automation1 from "../assets/automation/automation1.png";
 import automation2 from "../assets/automation/automation2.png";
 
+import calendar1 from "../assets/calendar/calendar1.png";
+import calendar2 from "../assets/calendar/calendar2.png";
+
 import c1 from "../assets/car/one.png";
 import c2 from "../assets/car/two.png";
 import c3 from "../assets/car/three.png";
@@ -47,6 +50,11 @@ import portal2 from "../assets/portal/portal2.png";
 import portal3 from "../assets/portal/portal3.png";
 import portal4 from "../assets/portal/portal4.png";
 import portal5 from "../assets/portal/portal5.png";
+
+import payment1 from "../assets/payment/payment1.png";
+import payment2 from "../assets/payment/payment2.png";
+import payment3 from "../assets/payment/payment3.png";
+
 
 import portfolio1 from "../assets/portfolio/portfolio1.png";
 import portfolio2 from "../assets/portfolio/portfolio2.png";
@@ -216,6 +224,30 @@ const projectsData = [
     images: [desktop1, desktop2],
     details:
       "Multi-module desktop application with separate pages for management, reporting, and configuration. Multi-page desktop UI, CRUD operations, Data validation, Modular architecture, Performance optimization and User-friendly workflows",
+  },
+
+  {
+    id: 11,
+    title: "Custom Calendar",
+    category: "Desktop",
+    description:
+      "Designed to handle both Ethiopian and Gregorian calendars seamlessly",
+    tech: ["C#", "Java GUI"],
+    images: [calendar2, calendar1],
+    details:
+      "Designed to handle both Ethiopian and Gregorian calendars seamlessly. Whether you need to convert dates between these systems, calculate exact age, or manage events across calendar types, this tool is built for precision and usability.tantly convert dates between Gregorian and Ethiopian calendar systems, including leap year handling and 13-month support for the Ethiopian calendar.",
+  },
+
+   {
+    id: 12,
+    title: "Payment Integration",
+    category: "Web",
+    description:
+      "Multi-Gateway Payment Integration",
+    tech: ["RESTful API", ".NET", "Json"],
+    images: [payment1, payment2, payment3],
+    details:
+      "Built a multi-gateway payment integration system that enables seamless processing across multiple payment providers. Includes secure API integration, transaction validation, error handling, and unified payment management.",
   },
 ];
 
