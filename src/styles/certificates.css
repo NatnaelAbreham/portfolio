@@ -470,6 +470,80 @@ github button
   to { transform: scale(1); opacity: 1; }
 }
 
+
+
+
+
+
+.contact-btn:disabled {
+  opacity: 0.6;        /* slightly faded */
+  cursor: not-allowed; /* shows it’s disabled */
+}
+
+/* optional: subtle animation for loading */
+.contact-btn[disabled]::after {
+  content: "⏳";        /* small hourglass or spinner */
+  margin-left: 8px;
+  display: inline-block;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.success-msg {
+  color: #28a745;       /* green for success */
+  font-weight: 500;
+  margin-top: 10px;
+  transition: opacity 0.4s ease, transform 0.4s ease;
+}
+
+.error-msg {
+  color: #dc3545;       /* red for error */
+  font-weight: 500;
+  margin-top: 10px;
+  transition: opacity 0.4s ease, transform 0.4s ease;
+}
+
+/* optional fade-in animation */
+.form-status {
+  opacity: 0;
+  transform: translateY(10px);
+  animation: fadeInUp 0.4s forwards;
+}
+
+@keyframes fadeInUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.form-status {
+  opacity: 1;
+  transition: opacity 0.5s ease;
+}
+
+.form-status.fade-out {
+  opacity: 0;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 /* =========================
    Mobile Optimization
 ========================= */

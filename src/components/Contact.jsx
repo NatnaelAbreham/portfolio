@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import React, { useRef, useState,useEffect  } from "react";
 import { motion } from "framer-motion";
 import emailjs from "@emailjs/browser";
 import { FaEnvelope, FaPhoneAlt, FaMapMarkerAlt } from "react-icons/fa";
@@ -22,34 +22,52 @@ const slideRight = {
 const Contact = () => {
   const formRef = useRef();
   const [status, setStatus] = useState("");
+  const [loading, setLoading] = useState(false);
 
-  const sendEmail = (e) => {
-    e.preventDefault();
-
-    emailjs
-  .sendForm(
-    import.meta.env.VITE_EMAILJS_SERVICE_ID,
-    import.meta.env.VITE_EMAILJS_TEMPLATE_ID,
-    formRef.current,
-    import.meta.env.VITE_EMAILJS_PUBLIC_KEY
-  )
-  .then(
-  () => {
-    setStatus("Message sent successfully ✅");
-    formRef.current.reset();
-  },
-  () => {
-    setStatus("Something went wrong ❌ Please try again.");
+  useEffect(() => {
+  if (status) {
+    const timer = setTimeout(() => {
+      setStatus(""); // removes message
+    }, 5000);
+    return () => clearTimeout(timer);
   }
-);
+}, [status]);
 
+ const sendEmail = (e) => {
+  e.preventDefault();
+  setLoading(true);   // start loading
+  setStatus("");      // clear previous message
 
-  };
+  emailjs
+    .sendForm(
+      import.meta.env.VITE_EMAILJS_SERVICE_ID,
+      import.meta.env.VITE_EMAILJS_TEMPLATE_ID,
+      formRef.current,
+      import.meta.env.VITE_EMAILJS_PUBLIC_KEY
+    )
+    .then(
+      () => {
+        setStatus("Message sent successfully ✅");
+        formRef.current.reset();
+        setLoading(false);
+
+        // Clear message after 5 seconds
+        setTimeout(() => setStatus(""), 5000);
+      },
+      () => {
+        setStatus("Something went wrong ❌ Please try again.");
+        setLoading(false);
+
+        // Clear message after 5 seconds
+        setTimeout(() => setStatus(""), 5000);
+      }
+    );
+};
+
 
   return (
     <section id="contact" className="contact-section">
       <div className="container">
-
         {/* Header */}
         <motion.div
           variants={fadeUp}
@@ -61,13 +79,11 @@ const Contact = () => {
         >
           <h2 className="section-title">Let’s Work Together</h2>
           <p className="section-subtitle">
-            Have a project in mind or just want to say hello?  
-            Drop a message and I’ll get back to you.
+            Have a project in mind or just want to say hello? Drop a message and I’ll get back to you.
           </p>
         </motion.div>
 
         <div className="row g-4 align-items-stretch">
-
           {/* Info Cards */}
           <motion.div
             className="col-md-4"
@@ -132,11 +148,20 @@ const Contact = () => {
                 <label>Your Message</label>
               </div>
 
-              <button type="submit" className="contact-btn">
-                Send Message
+              <button type="submit" className="contact-btn" disabled={loading}>
+                {loading ? "Sending..." : "Send Message"}
               </button>
 
-              {status && <p className="form-status">{status}</p>}
+              {status && (
+                <motion.p
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.4 }}
+                  className={status.includes("successfully") ? "success-msg" : "error-msg"}
+                >
+                  {status}
+                </motion.p>
+              )}
             </form>
           </motion.div>
         </div>

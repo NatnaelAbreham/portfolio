@@ -6,6 +6,6 @@ export default defineConfig({
   base: '/portfolio/',   // ✅ MUST match your repo name
   server: {
     host: true,
-    port: 5173
+    port: 5177
   }
 })
