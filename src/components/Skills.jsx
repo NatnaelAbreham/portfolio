@@ -86,19 +86,19 @@ const Skills = () => {
   skills: [
     { name: "RESTful API Design", icon: <FaCheckCircle />, iconColor: "#22c55e",color: "#22c55e" },
     { name: "Authentication & Authorization", icon: <FaCheckCircle />, iconColor: "#22c55e" ,color: "#22c55e" },
-    { name: "Layered Architecture", icon: <FaCheckCircle />, iconColor: "#22c55e" ,color: "#22c55e" },
+    /* { name: "Layered Architecture", icon: <FaCheckCircle />, iconColor: "#22c55e" ,color: "#22c55e" }, */
     { name: "Scalability & Reliability", icon: <FaCheckCircle />, iconColor: "#22c55e",color: "#22c55e"  },
   ],
 },
 {
-  title: "Development Environment",
+  title: "Environment",
   subtitle: "From local setup to production",
   color: "#f97316",
   skills: [
     { name: "Environment Configuration", icon: <FaCheckCircle />, iconColor: "#22c55e" ,color: "#22c55e" },
     { name: "Application Deployment", icon: <FaCheckCircle />, iconColor: "#22c55e" ,color: "#22c55e"  },
     { name: "Debugging & Monitoring", icon: <FaCheckCircle />, iconColor: "#22c55e",color: "#22c55e"  },
-    { name: "Production Support", icon: <FaCheckCircle />, iconColor: "#22c55e",color: "#22c55e"  },
+    /* { name: "Production Support", icon: <FaCheckCircle />, iconColor: "#22c55e",color: "#22c55e"  }, */
   ],
 },
   ];

@@ -1,5 +1,6 @@
-import React from "react";
+import React, { useRef, useState } from "react";
 import { motion } from "framer-motion";
+import emailjs from "@emailjs/browser";
 import { FaEnvelope, FaPhoneAlt, FaMapMarkerAlt } from "react-icons/fa";
 import "../styles/contact.css";
 
@@ -19,6 +20,32 @@ const slideRight = {
 };
 
 const Contact = () => {
+  const formRef = useRef();
+  const [status, setStatus] = useState("");
+
+  const sendEmail = (e) => {
+    e.preventDefault();
+
+    emailjs
+  .sendForm(
+    import.meta.env.VITE_EMAILJS_SERVICE_ID,
+    import.meta.env.VITE_EMAILJS_TEMPLATE_ID,
+    formRef.current,
+    import.meta.env.VITE_EMAILJS_PUBLIC_KEY
+  )
+  .then(
+  () => {
+    setStatus("Message sent successfully ✅");
+    formRef.current.reset();
+  },
+  () => {
+    setStatus("Something went wrong ❌ Please try again.");
+  }
+);
+
+
+  };
+
   return (
     <section id="contact" className="contact-section">
       <div className="container">
@@ -78,36 +105,38 @@ const Contact = () => {
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
           >
-            <form className="contact-form">
+            <form ref={formRef} onSubmit={sendEmail} className="contact-form">
               <div className="row">
                 <div className="col-md-6">
                   <div className="floating-input">
-                    <input type="text" required />
+                    <input type="text" name="user_name" required />
                     <label>Your Name</label>
                   </div>
                 </div>
 
                 <div className="col-md-6">
                   <div className="floating-input">
-                    <input type="email" required />
+                    <input type="email" name="user_email" required />
                     <label>Email Address</label>
                   </div>
                 </div>
               </div>
 
               <div className="floating-input">
-                <input type="text" required />
+                <input type="text" name="subject" required />
                 <label>Subject</label>
               </div>
 
               <div className="floating-input">
-                <textarea rows="5" required></textarea>
+                <textarea name="message" rows="5" required></textarea>
                 <label>Your Message</label>
               </div>
 
               <button type="submit" className="contact-btn">
                 Send Message
               </button>
+
+              {status && <p className="form-status">{status}</p>}
             </form>
           </motion.div>
         </div>
