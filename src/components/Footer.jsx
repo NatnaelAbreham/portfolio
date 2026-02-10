@@ -33,10 +33,10 @@ const Footer = () => {
           <div className="col-md-4 text-center text-md-end">
             <h6 className="footer-title">Let’s Connect</h6>
             <div className="footer-socials">
-              <a href="#" aria-label="GitHub"><FaGithub /></a>
-              <a href="#" aria-label="LinkedIn"><FaLinkedin /></a>
+              <a href="https://github.com/NatnaelAbreham/" aria-label="GitHub"><FaGithub /></a>
+              <a href="www.linkedin.com/in/natnael-abraham-172aa4292" aria-label="LinkedIn"><FaLinkedin /></a>
               <a href="#" aria-label="Twitter"><FaTwitter /></a>
-              <a href="mailto:your@email.com" aria-label="Email">
+              <a href="mailto:example@gmail.com" aria-label="Email">
                 <FaEnvelope />
               </a>
             </div>

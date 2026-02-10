@@ -1,8 +1,10 @@
 import React, { useRef, useState,useEffect  } from "react";
 import { motion } from "framer-motion";
 import emailjs from "@emailjs/browser";
-import { FaEnvelope, FaPhoneAlt, FaMapMarkerAlt } from "react-icons/fa";
+/* import { FaEnvelope, FaPhoneAlt,  } from "react-icons/fa"; */
 import "../styles/contact.css";
+import '../styles/certificates.css';
+ import { FaGithub, FaLinkedin,FaMapMarkerAlt } from "react-icons/fa";
 
 const fadeUp = {
   hidden: { opacity: 0, y: 40 },
@@ -93,17 +95,25 @@ const Contact = () => {
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
           >
-            <div className="contact-info-card">
-              <FaEnvelope />
-              <h5>Email</h5>
-              <p>yourname@email.com</p>
-            </div>
+           
 
-            <div className="contact-info-card">
-              <FaPhoneAlt />
-              <h5>Phone</h5>
-              <p>+251 XXX XXX XXX</p>
-            </div>
+<div className="contact-info-card">
+  <FaGithub />
+  <h5>GitHub</h5>
+  <a  href="https://github.com/natnaelabreham" target="_blank" rel="noopener noreferrer" className = "certificate-link">
+     View Credential
+    <i className="bi bi-arrow-up-right"></i>
+  </a>
+</div>
+
+<div className="contact-info-card">
+  <FaLinkedin />
+  <h5>LinkedIn</h5>
+  <a href="https://linkedin.com/in/natnael-abraham-172aa4292" target="_blank" rel="noopener noreferrer" className = "certificate-link">
+     View Credential
+    <i className="bi bi-arrow-up-right"></i>
+  </a>
+</div>
 
             <div className="contact-info-card">
               <FaMapMarkerAlt />
