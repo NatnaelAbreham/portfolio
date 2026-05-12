@@ -1,28 +1,55 @@
+import { useEffect, useRef } from "react";
 import profile from "../assets/profile.jpg";
 import "../styles/hero.css";
 
 const Hero = () => {
+  const heroRef = useRef();
+
+  // subtle mouse parallax
+  useEffect(() => {
+    const handleMove = (e) => {
+      const { clientX, clientY } = e;
+      const x = (clientX / window.innerWidth - 0.5) * 20;
+      const y = (clientY / window.innerHeight - 0.5) * 20;
+
+      heroRef.current.style.transform = `rotateX(${-y}deg) rotateY(${x}deg)`;
+    };
+
+    window.addEventListener("mousemove", handleMove);
+    return () => window.removeEventListener("mousemove", handleMove);
+  }, []);
+
   return (
     <section id="home" className="hero">
-      {/* 3D background layers */}
+      {/* Background orbs */}
       <div className="hero-bg">
         <span className="orb orb-1" />
         <span className="orb orb-2" />
         <span className="orb orb-3" />
       </div>
 
-      <div className="hero-glass">
+      <div ref={heroRef} className="hero-glass">
         <div className="hero-text">
           <h4>Hello, I’m</h4>
           <h1>Natanel Abraham</h1>
-          <h2 className="gradient-text">Full Stack Developer</h2>
-          <p>I design and build modern, fast and visually powerful web experiences
-  that help businesses grow and stand out.</p>
 
-         <div className="d-flex flex-wrap gap-3">
-          <a href="#contact" className="btn btn-primary-custom">Get In Touch</a>
-          <a href="#projects" className="btn btn-secondary-custom">See Work</a>
-        </div>
+          <h2 className="gradient-text animated-gradient">
+            Full Stack Developer
+          </h2>
+
+          <p>
+            I design and build high-performance, visually refined digital
+            experiences that help brands stand out and scale.
+          </p>
+
+          <div className="hero-actions">
+            <a href="#contact" className="btn primary">
+              Get In Touch
+            </a>
+            <a href="#projects" className="btn secondary">
+              View Work
+            </a>
+          </div>
         </div>
 
         <div className="hero-image">

@@ -13,13 +13,16 @@ import Projects from './components/Projects.jsx'
 import Contact from './components/Contact.jsx'
 import Footer from './components/Footer.jsx'
 import Order from './components/Order.jsx';
+import Services from './components/Services.jsx';
+import CaseStudy from './components/CaseStudy.jsx';
+import CTA from './components/CTA.jsx';
 
 function App() {
   AOS.init({
-  duration: 1000,
-  once: true,
-  offset: 100,
-});
+    duration: 1000,
+    once: true,
+    offset: 100,
+  });
   const [theme, setTheme] = useState(() => {
     return localStorage.getItem('theme') || 'light'
   })
@@ -28,24 +31,24 @@ function App() {
     initScrollAnimations()
   }, [])
 
- /*  useEffect(() => {
-    document.documentElement.setAttribute(
-      'data-bs-theme',
-      theme
-    )
-    localStorage.setItem('theme', theme)
-  }, [theme]) */
+  /*  useEffect(() => {
+     document.documentElement.setAttribute(
+       'data-bs-theme',
+       theme
+     )
+     localStorage.setItem('theme', theme)
+   }, [theme]) */
 
 
   useEffect(() => {
-  // For YOUR CSS
-  document.documentElement.setAttribute('data-theme', theme)
+    // For YOUR CSS
+    document.documentElement.setAttribute('data-theme', theme)
 
-  // For Bootstrap
-  document.documentElement.setAttribute('data-bs-theme', theme)
+    // For Bootstrap
+    document.documentElement.setAttribute('data-bs-theme', theme)
 
-  localStorage.setItem('theme', theme)
-}, [theme])
+    localStorage.setItem('theme', theme)
+  }, [theme])
 
   const toggleTheme = () => {
     setTheme(prev => (prev === 'light' ? 'dark' : 'light'))
@@ -55,15 +58,16 @@ function App() {
     <div className="App">
       <Navbar theme={theme} toggleTheme={toggleTheme} />
       <Hero />
+      <Services />        
       <About />
-      <Skills />
-     
       <Projects />
-       <Certificates />
+      <CaseStudy />       
+      <Skills />
+      <Certificates />       
       <Order />
-      <Contact />
-      
-     <Footer />
+      <CTA />             
+      <Contact /> 
+      <Footer />
     </div>
   )
 }

@@ -8,7 +8,7 @@ const Navbar = ({ toggleTheme, theme }) => {
   const [activeSection, setActiveSection] = useState("home");
   const lastScroll = useRef(0);
 
-  const navItems = ["Home", "About", "Skills", "Projects", "Certificates", "Order", "Contact"];
+  const navItems = ["Home", "Services", "About", "Skills", "case-study", "Projects","cta", "Certificates", "Order", "Contact"];
 
   // Scroll hide navbar
   useEffect(() => {

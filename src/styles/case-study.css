@@ -1,0 +1,90 @@
+.case-study-wrapper {
+  display: grid;
+  grid-template-columns: 1.1fr 1fr;
+  gap: 3rem;
+  align-items: center;
+}
+
+/* LEFT CONTENT */
+.case-study-content h3 {
+  font-size: 2rem;
+  margin-bottom: 1.5rem;
+  font-weight: 800;
+}
+
+/* BLOCKS */
+.case-block {
+  margin-bottom: 1.2rem;
+}
+
+.case-block h4 {
+  font-size: 1rem;
+  font-weight: 700;
+  margin-bottom: 0.3rem;
+  color: var(--primary-color);
+}
+
+.case-block p {
+  font-size: 0.95rem;
+  color: var(--text-secondary);
+  line-height: 1.5;
+}
+
+/* ACTION BUTTONS */
+.case-actions {
+  margin-top: 1.5rem;
+  display: flex;
+  gap: 1rem;
+}
+
+/* IMAGE */
+.case-study-image {
+  position: relative;
+}
+
+.case-study-image img {
+  width: 100%;
+  border-radius: 20px;
+
+  border: 1px solid var(--border-subtle);
+
+  box-shadow: 0 30px 80px rgba(0,0,0,0.35);
+
+  transition: transform 0.4s ease;
+}
+
+.case-study-image img:hover {
+  transform: scale(1.03);
+}
+
+/* GLASS OVERLAY (SUBTLE) */
+.case-study-image::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 20px;
+
+  background: linear-gradient(
+    135deg,
+    rgba(255,255,255,0.08),
+    transparent
+  );
+
+  pointer-events: none;
+}
+
+/* RESPONSIVE */
+@media (max-width: 900px) {
+  .case-study-wrapper {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  .case-study-content {
+    text-align: center;
+  }
+
+  .case-actions {
+    justify-content: center;
+  }
+}
