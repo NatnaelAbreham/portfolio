@@ -6,17 +6,23 @@ const Navbar = ({ toggleTheme, theme }) => {
   const [hidden, setHidden] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
   const [activeSection, setActiveSection] = useState("home");
+  const [dropdownOpen, setDropdownOpen] = useState(false);
   const lastScroll = useRef(0);
 
-  const navItems = ["Home", "Services", "About", "Skills", "case-study", "Projects","cta", "Certificates", "Order", "Contact"];
+  // Define dropdown items
+  const dropdownItems = ["case-study", "CTA", "Certificates", "Order"];
+  const mainNavItems = ["Home", "Services", "About", "Skills", "Projects", "Contact"];
+  
+  const navItems = [...mainNavItems, ...dropdownItems];
 
-  // Scroll hide navbar
+  // Close dropdown on scroll
   useEffect(() => {
     const onScroll = () => {
       const current = window.scrollY;
       if (current > lastScroll.current && current > 120) {
         setHidden(true);
         setMenuOpen(false);
+        setDropdownOpen(false);
       } else {
         setHidden(false);
       }
@@ -26,7 +32,7 @@ const Navbar = ({ toggleTheme, theme }) => {
       navItems.forEach((item) => {
         const el = document.getElementById(item.toLowerCase());
         if (el) {
-          const top = el.offsetTop - 150; // adjust for navbar height
+          const top = el.offsetTop - 150;
           const bottom = top + el.offsetHeight;
           if (current >= top && current < bottom) {
             setActiveSection(item.toLowerCase());
@@ -39,29 +45,65 @@ const Navbar = ({ toggleTheme, theme }) => {
     return () => window.removeEventListener("scroll", onScroll);
   }, [navItems]);
 
+  // Close dropdown when clicking outside
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (!event.target.closest('.dropdown')) {
+        setDropdownOpen(false);
+      }
+    };
+    document.addEventListener('click', handleClickOutside);
+    return () => document.removeEventListener('click', handleClickOutside);
+  }, []);
+
   return (
     <nav className={`floating-navbar ${hidden ? "hide" : ""}`}>
       <div className="nav-glass">
         <a href="#home" className="brand">
           <img src={logo} alt="logo" />
-          {/* <span class  = "text-warning">atty</span> */}
         </a>
 
         {/* Desktop */}
         <ul className="nav-links desktop">
-  {navItems
-    .filter(item => item !== "Home")
-    .map(item => (
-      <li key={item}>
-        <a
-          href={`#${item.toLowerCase()}`}
-          className={activeSection === item.toLowerCase() ? "active" : ""}
-        >
-          {item}
-        </a>
-      </li>
-    ))}
-</ul>
+          {mainNavItems
+            .filter(item => item !== "Home")
+            .map(item => (
+              <li key={item}>
+                <a
+                  href={`#${item.toLowerCase()}`}
+                  className={activeSection === item.toLowerCase() ? "active" : ""}
+                >
+                  {item}
+                </a>
+              </li>
+            ))}
+          
+          {/* Dropdown */}
+          <li className="dropdown">
+            <button 
+              className={`dropdown-btn ${dropdownOpen ? "active-dropdown" : ""}`}
+              onClick={(e) => {
+                e.stopPropagation();
+                setDropdownOpen(!dropdownOpen);
+              }}
+            >
+              More <i className={`bi bi-chevron-down ${dropdownOpen ? "rotate" : ""}`} />
+            </button>
+            <ul className={`dropdown-menu ${dropdownOpen ? "show" : ""}`}>
+              {dropdownItems.map(item => (
+                <li key={item}>
+                  <a
+                    href={`#${item.toLowerCase()}`}
+                    className={activeSection === item.toLowerCase() ? "active" : ""}
+                    onClick={() => setDropdownOpen(false)}
+                  >
+                    {item}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </li>
+        </ul>
 
         {/* Actions */}
         <div className="nav-actions">
@@ -81,19 +123,34 @@ const Navbar = ({ toggleTheme, theme }) => {
 
       {/* Mobile dropdown */}
       <div className={`mobile-menu ${menuOpen ? "show" : ""}`}>
-  {navItems
-    .filter(item => item !== "Home")
-    .map(item => (
-      <a
-        key={item}
-        href={`#${item.toLowerCase()}`}
-        className={activeSection === item.toLowerCase() ? "active" : ""}
-        onClick={() => setMenuOpen(false)}
-      >
-        {item}
-      </a>
-    ))}
-</div>
+        {mainNavItems
+          .filter(item => item !== "Home")
+          .map(item => (
+            <a
+              key={item}
+              href={`#${item.toLowerCase()}`}
+              className={activeSection === item.toLowerCase() ? "active" : ""}
+              onClick={() => setMenuOpen(false)}
+            >
+              {item}
+            </a>
+          ))}
+        
+        {/* Mobile: Show dropdown items as separate */}
+        <div className="mobile-dropdown-separator">
+          <hr />
+          {dropdownItems.map(item => (
+            <a
+              key={item}
+              href={`#${item.toLowerCase()}`}
+              className={activeSection === item.toLowerCase() ? "active" : ""}
+              onClick={() => setMenuOpen(false)}
+            >
+              {item}
+            </a>
+          ))}
+        </div>
+      </div>
     </nav>
   );
 };
