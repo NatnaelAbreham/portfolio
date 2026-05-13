@@ -572,7 +572,7 @@
     transform: translate(-50%, -50%);
   }
   .project-card::after {
-    content: "Tap to view";
+    content: "";
     position: absolute;
     bottom: 12px;
     right: 12px;
