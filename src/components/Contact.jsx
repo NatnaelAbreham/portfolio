@@ -1,181 +1,203 @@
-import React, { useRef, useState,useEffect  } from "react";
+import { useRef, useState } from "react";
 import { motion } from "framer-motion";
 import emailjs from "@emailjs/browser";
-/* import { FaEnvelope, FaPhoneAlt,  } from "react-icons/fa"; */
+
 import "../styles/contact.css";
-import '../styles/certificates.css';
- import { FaGithub, FaLinkedin,FaMapMarkerAlt } from "react-icons/fa";
 
-const fadeUp = {
-  hidden: { opacity: 0, y: 40 },
-  visible: { opacity: 1, y: 0 },
-};
-
-const slideLeft = {
-  hidden: { opacity: 0, x: -40 },
-  visible: { opacity: 1, x: 0 },
-};
-
-const slideRight = {
-  hidden: { opacity: 0, x: 40 },
-  visible: { opacity: 1, x: 0 },
-};
+import {
+  FaGithub,
+  FaLinkedin,
+  FaMapMarkerAlt,
+  FaEnvelope,
+} from "react-icons/fa";
 
 const Contact = () => {
   const formRef = useRef();
-  const [status, setStatus] = useState("");
+
   const [loading, setLoading] = useState(false);
+  const [status, setStatus] = useState("");
 
-  useEffect(() => {
-  if (status) {
-    const timer = setTimeout(() => {
-      setStatus(""); // removes message
-    }, 5000);
-    return () => clearTimeout(timer);
-  }
-}, [status]);
+  const sendEmail = (e) => {
+    e.preventDefault();
 
- const sendEmail = (e) => {
-  e.preventDefault();
-  setLoading(true);   // start loading
-  setStatus("");      // clear previous message
+    setLoading(true);
+    setStatus("");
 
-  emailjs
-    .sendForm(
-      import.meta.env.VITE_EMAILJS_SERVICE_ID,
-      import.meta.env.VITE_EMAILJS_TEMPLATE_ID,
-      formRef.current,
-      import.meta.env.VITE_EMAILJS_PUBLIC_KEY
-    )
-    .then(
-      () => {
-        setStatus("Message sent successfully ✅");
-        formRef.current.reset();
-        setLoading(false);
-
-        // Clear message after 5 seconds
-        setTimeout(() => setStatus(""), 5000);
-      },
-      () => {
-        setStatus("Something went wrong ❌ Please try again.");
-        setLoading(false);
-
-        // Clear message after 5 seconds
-        setTimeout(() => setStatus(""), 5000);
-      }
-    );
-};
-
+    emailjs
+      .sendForm(
+        import.meta.env.VITE_EMAILJS_SERVICE_ID,
+        import.meta.env.VITE_EMAILJS_TEMPLATE_ID,
+        formRef.current,
+        import.meta.env.VITE_EMAILJS_PUBLIC_KEY
+      )
+      .then(
+        () => {
+          setStatus("Message sent successfully.");
+          formRef.current.reset();
+          setLoading(false);
+        },
+        () => {
+          setStatus("Something went wrong. Please try again.");
+          setLoading(false);
+        }
+      );
+  };
 
   return (
     <section id="contact" className="contact-section">
+
       <div className="container">
-        {/* Header */}
-        <motion.div
-          variants={fadeUp}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true }}
-          transition={{ duration: 0.8 }}
-          className="section-header text-center"
-        >
-          <h2 className="section-title">Let’s Work Together</h2>
-          <p className="section-subtitle">
-            Have a project in mind or just want to say hello? Drop a message and I’ll get back to you.
+
+        {/* HEADER */}
+        <div className="contact-header">
+          <h2>Let’s Build Something Great</h2>
+
+          <p>
+            Have a project, idea, or opportunity?
+            Let’s discuss how we can turn it into
+            a scalable digital product.
           </p>
-        </motion.div>
-
-        <div className="row g-4 align-items-stretch">
-          {/* Info Cards */}
-          <motion.div
-            className="col-md-4"
-            variants={slideLeft}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-          >
-           
-
-<div className="contact-info-card">
-  <FaGithub />
-  <h5>GitHub</h5>
-  <a  href="https://github.com/natnaelabreham" target="_blank" rel="noopener noreferrer" className = "certificate-link">
-     View Credential
-    <i className="bi bi-arrow-up-right"></i>
-  </a>
-</div>
-
-<div className="contact-info-card">
-  <FaLinkedin />
-  <h5>LinkedIn</h5>
-  <a href="https://linkedin.com/in/natnael-abraham-172aa4292" target="_blank" rel="noopener noreferrer" className = "certificate-link">
-     View Credential
-    <i className="bi bi-arrow-up-right"></i>
-  </a>
-</div>
-
-            <div className="contact-info-card">
-              <FaMapMarkerAlt />
-              <h5>Location</h5>
-              <p>Ethiopia</p>
-            </div>
-          </motion.div>
-
-          {/* Form */}
-          <motion.div
-            className="col-md-8"
-            variants={slideRight}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-          >
-            <form ref={formRef} onSubmit={sendEmail} className="contact-form">
-              <div className="row">
-                <div className="col-md-6">
-                  <div className="floating-input">
-                    <input type="text" name="user_name" required />
-                    <label>Your Name</label>
-                  </div>
-                </div>
-
-                <div className="col-md-6">
-                  <div className="floating-input">
-                    <input type="email" name="user_email" required />
-                    <label>Email Address</label>
-                  </div>
-                </div>
-              </div>
-
-              <div className="floating-input">
-                <input type="text" name="subject" required />
-                <label>Subject</label>
-              </div>
-
-              <div className="floating-input">
-                <textarea name="message" rows="5" required></textarea>
-                <label>Your Message</label>
-              </div>
-
-              <button type="submit" className="contact-btn" disabled={loading}>
-                {loading ? "Sending..." : "Send Message"}
-              </button>
-
-              {status && (
-                <motion.p
-                  initial={{ opacity: 0, y: 10 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.4 }}
-                  className={status.includes("successfully") ? "success-msg" : "error-msg"}
-                >
-                  {status}
-                </motion.p>
-              )}
-            </form>
-          </motion.div>
         </div>
+
+        {/* GRID */}
+        <div className="contact-grid">
+
+          {/* LEFT PANEL */}
+          <motion.div
+            initial={{ opacity: 0, x: -30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.6 }}
+            viewport={{ once: true }}
+            className="contact-panel"
+          >
+
+            <div className="contact-card">
+              <FaEnvelope />
+
+              <div>
+                <h4>Email</h4>
+                <span>Available for freelance & remote work</span>
+              </div>
+            </div>
+
+            <div className="contact-card">
+              <FaGithub />
+
+              <div>
+                <h4>GitHub</h4>
+
+                <a
+                  href="https://github.com/natnaelabreham"
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  View Projects
+                </a>
+              </div>
+            </div>
+
+            <div className="contact-card">
+              <FaLinkedin />
+
+              <div>
+                <h4>LinkedIn</h4>
+
+                <a
+                  href="https://linkedin.com/in/natnael-abraham-172aa4292"
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  Connect Professionally
+                </a>
+              </div>
+            </div>
+
+            <div className="contact-card">
+              <FaMapMarkerAlt />
+
+              <div>
+                <h4>Location</h4>
+                <span>Addis Ababa, Ethiopia</span>
+              </div>
+            </div>
+
+          </motion.div>
+
+          {/* FORM */}
+          <motion.form
+            ref={formRef}
+            onSubmit={sendEmail}
+            initial={{ opacity: 0, x: 30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.6 }}
+            viewport={{ once: true }}
+            className="contact-form"
+          >
+
+            <div className="form-row">
+
+              <div className="form-group">
+                <label>Your Name</label>
+
+                <input
+                  type="text"
+                  name="user_name"
+                  required
+                />
+              </div>
+
+              <div className="form-group">
+                <label>Email Address</label>
+
+                <input
+                  type="email"
+                  name="user_email"
+                  required
+                />
+              </div>
+
+            </div>
+
+            <div className="form-group">
+              <label>Subject</label>
+
+              <input
+                type="text"
+                name="subject"
+                required
+              />
+            </div>
+
+            <div className="form-group">
+              <label>Your Message</label>
+
+              <textarea
+                name="message"
+                rows="6"
+                required
+              />
+            </div>
+
+            <button
+              type="submit"
+              className="contact-btn"
+              disabled={loading}
+            >
+              {loading ? "Sending..." : "Send Message"}
+            </button>
+
+            {status && (
+              <p className="form-status">
+                {status}
+              </p>
+            )}
+
+          </motion.form>
+
+        </div>
+
       </div>
+
     </section>
   );
 };

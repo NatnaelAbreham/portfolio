@@ -1,5 +1,6 @@
-import { useEffect, useRef } from "react";
+import { motion } from "framer-motion";
 import "../styles/skills.css";
+
 import {
   SiMongodb,
   SiMysql,
@@ -10,9 +11,8 @@ import {
   SiJavascript,
   SiTailwindcss,
   SiDotnet,
-  /* SiMicrosoftsqlserver, */
-  
 } from "react-icons/si";
+
 import {
   FaReact,
   FaHtml5,
@@ -26,171 +26,123 @@ import {
   FaCheckCircle,
 } from "react-icons/fa";
 
+const skillGroups = [
+  {
+    tier: "core",
+    title: "Core Engineering Stack",
+    subtitle: "What I use to build real-world applications",
+    skills: [
+      { name: "React", icon: <FaReact /> },
+      { name: "JavaScript", icon: <SiJavascript /> },
+      { name: "HTML5", icon: <FaHtml5 /> },
+      { name: "CSS3", icon: <FaCss3Alt /> },
+      { name: "Tailwind", icon: <SiTailwindcss /> },
+      { name: "Bootstrap", icon: <FaBootstrap /> },
+    ],
+  },
+  {
+    tier: "backend",
+    title: "Backend & APIs",
+    subtitle: "Server-side logic and scalable APIs",
+    skills: [
+      { name: "C# / .NET", icon: <SiDotnet /> },
+      { name: "Node.js", icon: <FaNodeJs /> },
+      { name: "Java", icon: <FaJava /> },
+      { name: "PHP", icon: <SiPhp /> },
+    ],
+  },
+  {
+    tier: "data",
+    title: "Data & Databases",
+    subtitle: "Designing reliable data systems",
+    skills: [
+      { name: "PostgreSQL", icon: <SiPostgresql /> },
+      { name: "MySQL", icon: <SiMysql /> },
+      { name: "MongoDB", icon: <SiMongodb /> },
+      { name: "SQL Server", icon: <FaDatabase /> },
+    ],
+  },
+  {
+    tier: "architecture",
+    title: "System Architecture",
+    subtitle: "Designing scalable and secure systems",
+    highlight: true,
+    skills: [
+      { name: "REST API Design", icon: <FaCheckCircle /> },
+      { name: "Authentication Systems", icon: <FaCheckCircle /> },
+      { name: "Scalable Architecture", icon: <FaCheckCircle /> },
+      { name: "Performance Optimization", icon: <FaCheckCircle /> },
+    ],
+  },
+  {
+    tier: "tools",
+    title: "Development Workflow",
+    subtitle: "Tools that support production delivery",
+    skills: [
+      { name: "Git", icon: <FaGitAlt /> },
+      { name: "GitHub", icon: <FaGithub /> },
+      { name: "Postman", icon: <SiPostman /> },
+      { name: "Swagger", icon: <SiSwagger /> },
+    ],
+  },
+];
+
 const Skills = () => {
-  const skillCardsRef = useRef([]);
-
-  const skillGroups = [
-    {
-      title: "Frontend",
-      subtitle: "Crafting engaging user interfaces",
-      color: "#60a5fa",
-      skills: [
-        { name: "React", icon: <FaReact />, color: "#61DAFB" },
-        { name: "JavaScript", icon: <SiJavascript />, color: "#F7DF1E" },
-        { name: "HTML5", icon: <FaHtml5 />, color: "#E34F26" },
-        { name: "CSS3", icon: <FaCss3Alt />, color: "#1572B6" },
-        { name: "Bootstrap", icon: <FaBootstrap />, color: "#7952B3" },
-        { name: "Tailwind", icon: <SiTailwindcss />, color: "#06B6D4" },
-      ],
-    },
-    {
-      title: "Backend",
-      subtitle: "Building robust server solutions",
-      color: "#8b5cf6",
-      skills: [
-        { name: "C#", icon: <SiDotnet />, color: "#512BD4" },
-        { name: "Node.js", icon: <FaNodeJs />, color: "#339933" },
-        { name: "Java", icon: <FaJava />, color: "#007396" },
-        { name: "PHP", icon: <SiPhp />, color: "#777BB4" },
-      ],
-    },
-    {
-      title: "Database",
-      subtitle: "Designing efficient data systems",
-      color: "#10b981",
-      skills: [
-        { name: "PostgreSQL", icon: <SiPostgresql />, color: "#4169E1" },
-        { name: "MySQL", icon: <SiMysql />, color: "#4479A1" },
-        { name: "MongoDB", icon: <SiMongodb />, color: "#47A248" },
-        { name: "SQL Server", icon: <FaDatabase />, color: "#CC2927" },
-      ],
-    },
-    {
-      title: "Tools",
-      subtitle: "Streamlining development workflows",
-      color: "#f59e0b",
-      skills: [
-        { name: "Git", icon: <FaGitAlt />, color: "#F05032" },
-        { name: "GitHub", icon: <FaGithub />, color: "#181717" },
-        { name: "Postman", icon: <SiPostman />, color: "#FF6C37" },
-        { name: "Swagger", icon: <SiSwagger />, color: "#85EA2D" },
-      ],
-    },
-
-
-
-{
-  title: "System Design",
-  subtitle: "Designing scalable, secure systems",
-  color: "#22c55e",
-  skills: [
-    { name: "RESTful API Design", icon: <FaCheckCircle />, iconColor: "#22c55e",color: "#22c55e" },
-    { name: "Authentication & Authorization", icon: <FaCheckCircle />, iconColor: "#22c55e" ,color: "#22c55e" },
-    /* { name: "Layered Architecture", icon: <FaCheckCircle />, iconColor: "#22c55e" ,color: "#22c55e" }, */
-    { name: "Scalability & Reliability", icon: <FaCheckCircle />, iconColor: "#22c55e",color: "#22c55e"  },
-  ],
-},
-{
-  title: "Environment",
-  subtitle: "From local setup to production",
-  color: "#f97316",
-  skills: [
-    { name: "Environment Configuration", icon: <FaCheckCircle />, iconColor: "#22c55e" ,color: "#22c55e" },
-    { name: "Application Deployment", icon: <FaCheckCircle />, iconColor: "#22c55e" ,color: "#22c55e"  },
-    { name: "Debugging & Monitoring", icon: <FaCheckCircle />, iconColor: "#22c55e",color: "#22c55e"  },
-    /* { name: "Production Support", icon: <FaCheckCircle />, iconColor: "#22c55e",color: "#22c55e"  }, */
-  ],
-},
-  ];
-
-  useEffect(() => {
-    const observerOptions = {
-      threshold: 0.2,
-      rootMargin: "0px 0px -50px 0px"
-    };
-
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          entry.target.style.opacity = "1";
-          entry.target.style.transform = "translateY(0)";
-        }
-      });
-    }, observerOptions);
-
-    skillCardsRef.current.forEach((card) => {
-      if (card) {
-        card.style.opacity = "0";
-        card.style.transform = "translateY(30px)";
-        card.style.transition = "opacity 0.6s ease, transform 0.6s ease";
-        observer.observe(card);
-      }
-    });
-
-    return () => observer.disconnect();
-  }, []);
-
   return (
-    <section id="skills" className="section-padding">
+    <section id="skills" className="skills section-padding">
       <div className="container">
+        {/* HEADER */}
         <div className="section-header">
-  <h2 className="section-title">Technical Skills</h2>
-  <p className="section-subtitle">
-    A comprehensive toolkit for building modern, scalable applications with cutting-edge technologies
-  </p>
-</div>
+          <h2 className="section-title">
+            Engineering Capabilities
+          </h2>
 
+          <p className="section-subtitle">
+            A practical breakdown of the systems, tools, and
+            technologies I use to design and build scalable
+            applications.
+          </p>
+        </div>
 
-        <div className="row g-4">
+        {/* GRID */}
+        <div className="skills-grid">
           {skillGroups.map((group, index) => (
-            <div 
-              className="col-md-6 col-lg-3" 
+            <motion.div
               key={index}
-              ref={(el) => (skillCardsRef.current[index] = el)}
-              style={{ transitionDelay: `${index * 100}ms` }}
+              className={`skill-card ${
+                group.highlight ? "highlight" : ""
+              }`}
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{
+                duration: 0.5,
+                delay: index * 0.1,
+              }}
             >
-              <div 
-                className="skill-card"
-                style={{
-                  '--hover-color': group.color,
-                }}
-              >
-                <div className="mb-6">
-                  <h4>{group.title}</h4>
-                  <p>{group.subtitle}</p>
-                </div>
-
-                <div className="skill-grid">
-                  {group.skills.map((skill, i) => (
-                    <div 
-                      key={i} 
-                      className="skill-item"
-                      style={{
-                        '--skill-color': skill.color,
-                      }}
-                    >
-                      <span 
-                        className="skill-icon"
-                        style={{ color: skill.color }}
-                      >
-                        {skill.icon}
-                      </span>
-                      <span className="skill-name">{skill.name}</span>
-                    </div>
-                  ))}
-                </div>
+              <div className="skill-header">
+                <h3>{group.title}</h3>
+                <p>{group.subtitle}</p>
               </div>
-            </div>
+
+              <div className="skill-items">
+                {group.skills.map((skill, i) => (
+                  <div key={i} className="skill-pill">
+                    <span className="icon">
+                      {skill.icon}
+                    </span>
+                    <span>{skill.name}</span>
+                  </div>
+                ))}
+              </div>
+            </motion.div>
           ))}
         </div>
 
-        <div className="mt-16 text-center">
-          <div className="inline-flex items-center gap-3 px-6 py-3 rounded-full bg-gradient-to-r from-blue-500/10 to-purple-500/10 border border-white/10">
-            <span className="w-2 h-2 rounded-full bg-green-500 animate-pulse"></span>
-            <span className="text-sm text-gray-400">
-              Continuously expanding skill set with latest technologies
-            </span>
-          </div>
+        {/* FOOTER NOTE */}
+        <div className="skills-footer">
+          Continuously improving system design and
+          full-stack architecture with real-world projects.
         </div>
       </div>
     </section>
