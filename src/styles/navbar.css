@@ -178,8 +178,10 @@
 }
 
 
+/* Add these styles and update the responsive section */
+
 /* =========================
-   MOBILE MENU
+   MOBILE MENU - IMPROVED
 ========================= */
 .mobile-menu {
   display: none;
@@ -187,24 +189,82 @@
   margin-top: 12px;
   padding: 1rem;
   border-radius: 18px;
-  background: rgba(255,255,255,0.18);
+  background: rgba(30, 30, 35, 0.95);
   backdrop-filter: blur(18px);
-  border: 1px solid rgba(255,255,255,0.25);
-  box-shadow: 0 25px 70px rgba(0,0,0,0.4);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  box-shadow: 0 25px 70px rgba(0, 0, 0, 0.4);
   animation: slideDown 0.35s ease;
+  max-height: 80vh;
+  overflow-y: auto;
+}
+
+[data-theme="light"] .mobile-menu {
+  background: rgba(255, 255, 255, 0.95);
+  border-color: rgba(0, 0, 0, 0.1);
 }
 
 .mobile-menu a {
-  padding: 0.7rem;
-  text-align: center;
+  padding: 0.8rem 1rem;
+  text-align: left;
   text-decoration: none;
   font-weight: 500;
   color: var(--text-primary);
+  border-radius: 8px;
+  transition: background 0.2s ease;
 }
 
-.nav-links a.active::after,
-.mobile-menu a.active::after {
+.mobile-menu a:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+[data-theme="light"] .mobile-menu a:hover {
+  background: rgba(0, 0, 0, 0.05);
+}
+
+/* Mobile dropdown button */
+.mobile-dropdown-btn {
+  background: none;
+  border: none;
+  color: var(--text-primary);
+  font-weight: 500;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
   width: 100%;
+  padding: 0.8rem 1rem;
+  font-size: 1rem;
+  border-radius: 8px;
+  transition: background 0.2s ease;
+}
+
+.mobile-dropdown-btn:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.mobile-dropdown-btn i {
+  transition: transform 0.3s ease;
+  font-size: 0.8rem;
+}
+
+.mobile-dropdown-btn i.rotate {
+  transform: rotate(180deg);
+}
+
+.mobile-dropdown-items {
+  display: none;
+  flex-direction: column;
+  margin-left: 1rem;
+  border-left: 2px solid var(--primary-color);
+}
+
+.mobile-dropdown-items.show {
+  display: flex;
+}
+
+.mobile-dropdown-items a {
+  padding: 0.6rem 1rem;
+  font-size: 0.95rem;
 }
 
 .mobile-dropdown-separator {
@@ -215,16 +275,6 @@
 .mobile-dropdown-separator hr {
   margin: 0.5rem 0;
   border-color: rgba(255, 255, 255, 0.2);
-}
-
-/* Light theme support */
-[data-theme="light"] .dropdown-menu {
-  background: rgba(255, 255, 255, 0.95);
-  border-color: rgba(0, 0, 0, 0.1);
-}
-
-[data-theme="light"] .dropdown-menu a:hover {
-  background: rgba(0, 0, 0, 0.05);
 }
 
 /* =========================
@@ -241,6 +291,15 @@
 
   .mobile-menu.show {
     display: flex;
+  }
+  
+  /* Adjust navbar padding on mobile */
+  .nav-glass {
+    padding: 0.7rem 1.2rem;
+  }
+  
+  .brand img {
+    height: 22px;
   }
 }
 

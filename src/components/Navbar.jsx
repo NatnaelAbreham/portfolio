@@ -7,6 +7,7 @@ const Navbar = ({ toggleTheme, theme }) => {
   const [menuOpen, setMenuOpen] = useState(false);
   const [activeSection, setActiveSection] = useState("home");
   const [dropdownOpen, setDropdownOpen] = useState(false);
+  const [mobileDropdownOpen, setMobileDropdownOpen] = useState(false); // New state for mobile dropdown
   const lastScroll = useRef(0);
 
   // Define dropdown items
@@ -15,7 +16,7 @@ const Navbar = ({ toggleTheme, theme }) => {
   
   const navItems = [...mainNavItems, ...dropdownItems];
 
-  // Close dropdown on scroll
+  // Close dropdowns on scroll
   useEffect(() => {
     const onScroll = () => {
       const current = window.scrollY;
@@ -23,6 +24,7 @@ const Navbar = ({ toggleTheme, theme }) => {
         setHidden(true);
         setMenuOpen(false);
         setDropdownOpen(false);
+        setMobileDropdownOpen(false); // Close mobile dropdown on scroll
       } else {
         setHidden(false);
       }
@@ -45,7 +47,7 @@ const Navbar = ({ toggleTheme, theme }) => {
     return () => window.removeEventListener("scroll", onScroll);
   }, [navItems]);
 
-  // Close dropdown when clicking outside
+  // Close desktop dropdown when clicking outside
   useEffect(() => {
     const handleClickOutside = (event) => {
       if (!event.target.closest('.dropdown')) {
@@ -56,14 +58,32 @@ const Navbar = ({ toggleTheme, theme }) => {
     return () => document.removeEventListener('click', handleClickOutside);
   }, []);
 
+  // Close mobile menu when clicking outside (optional)
+  useEffect(() => {
+    const handleOutsideClick = (event) => {
+      if (menuOpen && !event.target.closest('.floating-navbar')) {
+        setMenuOpen(false);
+        setMobileDropdownOpen(false);
+      }
+    };
+    document.addEventListener('click', handleOutsideClick);
+    return () => document.removeEventListener('click', handleOutsideClick);
+  }, [menuOpen]);
+
+  // Handle mobile dropdown toggle
+  const toggleMobileDropdown = (e) => {
+    e.stopPropagation();
+    setMobileDropdownOpen(!mobileDropdownOpen);
+  };
+
   return (
     <nav className={`floating-navbar ${hidden ? "hide" : ""}`}>
       <div className="nav-glass">
-        <a href="#home" className="brand">
+        <a href="#home" className="brand" onClick={() => setMenuOpen(false)}>
           <img src={logo} alt="logo" />
         </a>
 
-        {/* Desktop */}
+        {/* Desktop Navigation */}
         <ul className="nav-links desktop">
           {mainNavItems
             .filter(item => item !== "Home")
@@ -78,7 +98,7 @@ const Navbar = ({ toggleTheme, theme }) => {
               </li>
             ))}
           
-          {/* Dropdown */}
+          {/* Desktop Dropdown */}
           <li className="dropdown">
             <button 
               className={`dropdown-btn ${dropdownOpen ? "active-dropdown" : ""}`}
@@ -86,6 +106,8 @@ const Navbar = ({ toggleTheme, theme }) => {
                 e.stopPropagation();
                 setDropdownOpen(!dropdownOpen);
               }}
+              aria-expanded={dropdownOpen}
+              aria-haspopup="true"
             >
               More <i className={`bi bi-chevron-down ${dropdownOpen ? "rotate" : ""}`} />
             </button>
@@ -111,17 +133,21 @@ const Navbar = ({ toggleTheme, theme }) => {
             <i className={`bi ${theme === "light" ? "bi-moon" : "bi-sun"}`} />
           </button>
 
-          {/* Arrow toggle (mobile) */}
+          {/* Mobile menu toggle button */}
           <button
             className={`menu-arrow ${menuOpen ? "open" : ""}`}
-            onClick={() => setMenuOpen(!menuOpen)}
+            onClick={() => {
+              setMenuOpen(!menuOpen);
+              setMobileDropdownOpen(false); // Reset mobile dropdown when closing menu
+            }}
+            aria-label="Toggle menu"
           >
             <i className="bi bi-chevron-down" />
           </button>
         </div>
       </div>
 
-      {/* Mobile dropdown */}
+      {/* Mobile Menu */}
       <div className={`mobile-menu ${menuOpen ? "show" : ""}`}>
         {mainNavItems
           .filter(item => item !== "Home")
@@ -130,25 +156,40 @@ const Navbar = ({ toggleTheme, theme }) => {
               key={item}
               href={`#${item.toLowerCase()}`}
               className={activeSection === item.toLowerCase() ? "active" : ""}
-              onClick={() => setMenuOpen(false)}
+              onClick={() => {
+                setMenuOpen(false);
+                setMobileDropdownOpen(false);
+              }}
             >
               {item}
             </a>
           ))}
         
-        {/* Mobile: Show dropdown items as separate */}
+        {/* Mobile Dropdown Section */}
         <div className="mobile-dropdown-separator">
-          <hr />
-          {dropdownItems.map(item => (
-            <a
-              key={item}
-              href={`#${item.toLowerCase()}`}
-              className={activeSection === item.toLowerCase() ? "active" : ""}
-              onClick={() => setMenuOpen(false)}
-            >
-              {item}
-            </a>
-          ))}
+          <button 
+            className="mobile-dropdown-btn"
+            onClick={toggleMobileDropdown}
+            aria-expanded={mobileDropdownOpen}
+          >
+            More Projects
+            <i className={`bi bi-chevron-down ${mobileDropdownOpen ? "rotate" : ""}`} />
+          </button>
+          <div className={`mobile-dropdown-items ${mobileDropdownOpen ? "show" : ""}`}>
+            {dropdownItems.map(item => (
+              <a
+                key={item}
+                href={`#${item.toLowerCase()}`}
+                className={activeSection === item.toLowerCase() ? "active" : ""}
+                onClick={() => {
+                  setMenuOpen(false);
+                  setMobileDropdownOpen(false);
+                }}
+              >
+                {item}
+              </a>
+            ))}
+          </div>
         </div>
       </div>
     </nav>
