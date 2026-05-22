@@ -443,157 +443,184 @@ const visibleProjects = showAll
         {/* Modal */}
 
 
-        <AnimatePresence>
-          {selectedProject && (
-            <>
-              {isMobile ? (
-                <motion.div
-  className="mobile-project-details"
-  initial={{ y: "100%" }}
-  animate={{ y: 0 }}
-  exit={{ y: "100%" }}
-  transition={{ type: "spring", damping: 28, stiffness: 260 }}
->
-                  <div className="mobile-header">
-                    <h3>{selectedProject.title}</h3>
-                    <button onClick={closeModal}><X size={20} /></button>
-                  </div>
+       {/* Modern Modal */}
+<AnimatePresence>
+  {selectedProject && (
+    <>
+      {/* Overlay */}
+      <motion.div
+        className="modal-overlay"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        exit={{ opacity: 0 }}
+        onClick={closeModal}
+      />
 
-                  <div className="mobile-content">
-                    {/*  <img
-              src={selectedProject.images[modalIndex]}
-              alt={selectedProject.title}
-              className="mobile-main-image"
-            /> */}
+      {isMobile ? (
+        <motion.div
+          className="mobile-project-details"
+          initial={{ y: "100%" }}
+          animate={{ y: 0 }}
+          exit={{ y: "100%" }}
+          transition={{ type: "spring", damping: 28, stiffness: 260 }}
+        >
+          <div className="mobile-header">
+            <h3>{selectedProject.title}</h3>
+            <button onClick={closeModal}>
+              <X size={20} />
+            </button>
+          </div>
 
-                    <div className="mobile-image-carousel">
+          <div className="mobile-content">
+            <div className="mobile-image-carousel">
+              {selectedProject.images.map((img, i) => (
+                <img
+                  key={i}
+                  src={img}
+                  alt={`${selectedProject.title} ${i + 1}`}
+                  loading="lazy"
+                  className="mobile-carousel-image"
+                  onClick={() => setModalIndex(i)}
+                />
+              ))}
+            </div>
+
+            <div className="detail-section">
+              <h4>Project Description</h4>
+              <p>{selectedProject.details}</p>
+            </div>
+
+            <div className="detail-section">
+              <h4>Technologies Used</h4>
+              <div className="mobile-tech">
+                {selectedProject.tech.map((t) => (
+                  <span key={t}>{t}</span>
+                ))}
+              </div>
+            </div>
+
+            <div className="modal-stats">
+              <div className="stat-item">
+                <span className="stat-value">{selectedProject.images.length}</span>
+                <span className="stat-label">Images</span>
+              </div>
+              <div className="stat-item">
+                <span className="stat-value">{selectedProject.tech.length}</span>
+                <span className="stat-label">Technologies</span>
+              </div>
+              <div className="stat-item">
+                <span className="stat-value">{selectedProject.category}</span>
+                <span className="stat-label">Category</span>
+              </div>
+            </div>
+          </div>
+        </motion.div>
+      ) : (
+        <motion.div
+          className="project-modal"
+          initial={{ opacity: 0, scale: 0.96 }}
+          animate={{ opacity: 1, scale: 1 }}
+          exit={{ opacity: 0, scale: 0.96 }}
+          transition={{ duration: 0.3 }}
+        >
+          {/* Header */}
+          <div className="modal-header">
+            <div className="modal-title-section">
+              <h3>{selectedProject.title}</h3>
+              <span className="modal-category">
+                {selectedProject.category}
+              </span>
+            </div>
+            <button className="modal-close" onClick={closeModal}>
+              <X size={22} />
+            </button>
+          </div>
+
+          {/* Content */}
+          <div className="modal-content-wrapper">
+            <div className="modal-content">
+              {/* Gallery */}
+              <div className="modal-gallery">
+                <img
+                  src={selectedProject.images[modalIndex]}
+                  alt={selectedProject.title}
+                  loading="lazy"
+                  className="modal-main-image"
+                />
+
+                {selectedProject.images.length > 1 && (
+                  <>
+                    <button className="nav-btn prev-btn" onClick={prevImage}>
+                      <ChevronLeft size={24} />
+                    </button>
+                    <button className="nav-btn next-btn" onClick={nextImage}>
+                      <ChevronRight size={24} />
+                    </button>
+
+                    <div className="thumbnail-container">
                       {selectedProject.images.map((img, i) => (
                         <img
                           key={i}
                           src={img}
-                          alt = "" 
-                          loading="lazy"
-                          className="mobile-carousel-image"
+                          alt={`Thumbnail ${i + 1}`}
+                          className={`thumbnail ${i === modalIndex ? "active" : ""}`}
                           onClick={() => setModalIndex(i)}
-                        />
-                      ))}
-                    </div>
-
-                    <p>{selectedProject.details}</p>
-
-                    <div className="mobile-tech">
-                      {selectedProject.tech.map((t) => (
-                        <span key={t}>{t}</span>
-                      ))}
-                    </div>
-                  </div>
-                </motion.div>
-              ) : (
-                // Current desktop modal
-                <motion.div
-                  className="project-modal"
-                  initial={{ opacity: 0, scale: 0.96 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  exit={{ opacity: 0, scale: 0.96 }}
-                  transition={{ duration: 0.3 }}
-                  onClick={(e) => e.stopPropagation()}
-                >
-                  {/* Header */}
-                  <div className="modal-header">
-                    <div>
-                      <h3 className="modal-title">
-                        {selectedProject.title}
-                      </h3>
-                      <span className="modal-category">
-                        {selectedProject.category}
-                      </span>
-                    </div>
-
-                    <button
-                      className="modal-close"
-                      onClick={closeModal}
-                    >
-                      <X size={20} />
-                    </button>
-                  </div>
-
-                  {/* Body */}
-                  <div className="modal-content-wrapper">
-                    <div className="modal-content">
-                      {/* Gallery */}
-                      <div className="modal-gallery">
-                        <img
-                          src={selectedProject.images[modalIndex]}
-                          alt = "" 
                           loading="lazy"
-                          className="modal-main-image"
                         />
-
-                        {selectedProject.images.length > 1 && (
-                          <>
-                            <button
-                              className="nav-btn prev-btn"
-                              onClick={prevImage}
-                            >
-                              <ChevronLeft size={20} />
-                            </button>
-
-                            <button
-                              className="nav-btn next-btn"
-                              onClick={nextImage}
-                            >
-                              <ChevronRight size={20} />
-                            </button>
-
-                            <div className="thumbnail-container">
-                              {selectedProject.images.map((img, i) => (
-                                <img
-                                  key={i}
-                                  src={img}
-                                  className={`thumbnail ${i === modalIndex ? "active" : ""
-                                    }`}
-                                  onClick={() => setModalIndex(i)}
-                                  alt = "" 
-                                  loading="lazy"
-                                />
-                              ))}
-                            </div>
-                          </>
-                        )}
-                      </div>
-
-                      {/* Details */}
-                      <div className="modal-details">
-                        <h4>Project Description</h4>
-                        <p>{selectedProject.details}</p>
-
-                        <h4>Technologies Used</h4>
-                        <div className="modal-tech">
-                          {selectedProject.tech.map((t) => (
-                            <span key={t}>{t}</span>
-                          ))}
-                        </div>
-                      </div>
+                      ))}
                     </div>
-                  </div>
+                  </>
+                )}
+              </div>
 
-                  {/* Footer */}
-                  <div className="modal-footer">
-                    <button
-                      className="secondary-btn"
-                      onClick={closeModal}
-                    >
-                      Close
-                    </button>
-                    <button className="primary-btn">
-                      View Live Demo
-                    </button>
+              {/* Details */}
+              <div className="modal-details">
+                <div className="detail-section">
+                  <h4>About This Project</h4>
+                  <p>{selectedProject.details}</p>
+                </div>
+
+                <div className="detail-section">
+                  <h4>Tech Stack</h4>
+                  <div className="modal-tech">
+                    {selectedProject.tech.map((t) => (
+                      <span key={t}>{t}</span>
+                    ))}
                   </div>
-                </motion.div>
-              )}
-            </>
-          )}
-        </AnimatePresence>
+                </div>
+
+                <div className="modal-stats">
+                  <div className="stat-item">
+                    <span className="stat-value">{selectedProject.images.length}</span>
+                    <span className="stat-label">Screenshots</span>
+                  </div>
+                  <div className="stat-item">
+                    <span className="stat-value">{selectedProject.tech.length}</span>
+                    <span className="stat-label">Technologies</span>
+                  </div>
+                  <div className="stat-item">
+                    <span className="stat-value">2024</span>
+                    <span className="stat-label">Year</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* Footer */}
+          <div className="modal-footer">
+            <button className="secondary-btn" onClick={closeModal}>
+              Close
+            </button>
+            <button className="primary-btn">
+              View Live Demo
+            </button>
+          </div>
+        </motion.div>
+      )}
+    </>
+  )}
+</AnimatePresence>
       </div>
     </section>
   );
