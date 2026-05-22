@@ -1,3 +1,26 @@
+# React Floating Navigation Bar
+
+A modern, responsive navigation component with smooth scrolling, theme switching, and dropdown menus.
+
+##  Features
+
+- **Floating Design** - Stylish glass-morphism effect that floats above content
+- **Auto-hide on Scroll** - Disappears when scrolling down, reappears when scrolling up
+- **Responsive Layout** - Desktop navigation with dropdown menus and mobile-optimized menu
+- **Active Section Tracking** - Automatically highlights the current section while scrolling
+- **Dark/Light Theme Toggle** - Built-in theme switching with sun/moon icons
+- **Dual Dropdown Support** 
+  - Desktop hover/click dropdown menu
+  - Mobile expandable dropdown section
+- **Accessibility** - ARIA attributes for better screen reader support
+- **Click-outside Detection** - Automatically closes menus when clicking outside
+
+##  Installation
+
+```bash
+npm install
+# or
+yarn install
 # React + Vite
 
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
