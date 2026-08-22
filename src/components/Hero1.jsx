@@ -12,8 +12,8 @@ const Hero = () => {
 
       const { clientX, clientY } = e;
 
-      const x = (clientX / window.innerWidth - 0.5) * 14;
-      const y = (clientY / window.innerHeight - 0.5) * 14;
+      const x = (clientX / window.innerWidth - 0.5) * 4;
+      const y = (clientY / window.innerHeight - 0.5) * 4;
 
       heroRef.current.style.transform = `
         rotateX(${-y}deg)
