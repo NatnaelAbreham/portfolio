@@ -250,6 +250,19 @@ const projectsData = [
       "Developed a multi-functional custom calculator suite with advanced real-world applications.", 
     
     },
+    {
+    id: 13,
+    title: "Beauty salon",
+    category: "web",
+    description:
+      "Multi-functional Beauty salon suite with advanced real-world applications:",
+    tech: ["React.js", "Javascript", "CSS", "Tailwind CSS", "HTML"],
+    images: [calc1, calc2, calc3, calc4, calc5, calc6, calc7, calc8, calc9, calc10],
+    details:
+      "Developed a multi-functional Beauty salon suite with advanced real-world applications.", 
+    
+    },
+
 
   
 ];
