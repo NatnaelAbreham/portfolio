@@ -83,6 +83,17 @@ import game8 from "../assets/game/game8.jpg";
 import game9 from "../assets/game/game9.jpg";
 import game10 from "../assets/game/game1.jpg";
 
+import r1 from "../assets/r/r10.jpg";
+import r2 from "../assets/r/r2.jpg";
+import r3 from "../assets/r/r3.jpg";
+import r4 from "../assets/r/r4.jpg";
+import r5 from "../assets/r/r5.jpg";
+import r6 from "../assets/r/r6.jpg";
+import r7 from "../assets/r/r7.jpg";
+import r8 from "../assets/r/r8.jpg";
+import r9 from "../assets/r/r9.jpg";
+import r10 from "../assets/r/r1.jpg";
+
 /* =========================
    Data
 ========================= */
