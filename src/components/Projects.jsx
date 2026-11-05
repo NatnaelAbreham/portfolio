@@ -94,6 +94,20 @@ import r8 from "../assets/r/r8.jpg";
 import r9 from "../assets/r/r9.jpg";
 import r10 from "../assets/r/r1.jpg";
 
+import r11 from "../assets/r/r11.jpg";
+import r12 from "../assets/r/r12.jpg";
+import r13 from "../assets/r/r13.jpg";
+import r14 from "../assets/r/r14.jpg";
+import r15 from "../assets/r/r15.jpg";
+import r16 from "../assets/r/r16.jpg";
+import r17 from "../assets/r/r17.jpg";
+import r18 from "../assets/r/r18.jpg";
+import r19 from "../assets/r/r19.jpg";
+import r20 from "../assets/r/r20.jpg";
+
+import r21 from "../assets/r/r21.jpg";
+import r22 from "../assets/r/r22.jpg";
+import r23 from "../assets/r/r23.jpg";
 /* =========================
    Data
 ========================= */
@@ -271,6 +285,20 @@ const projectsData = [
     images: [calc1, calc2, calc3, calc4, calc5, calc6, calc7, calc8, calc9, calc10],
     details:
       "Developed a multi-functional Beauty salon suite with advanced real-world applications.", 
+    
+    },
+
+
+    {
+    id: 14,
+    title: "Restaurant Ordering System",
+    category: "web",
+    description:
+      "Restaurant | Full-Stack Ordering & Management System:",
+    tech: ["React.js", "Javascript", "CSS", "Tailwind CSS", "HTML"],
+    images: [r1, r2, r3, r4, r5, r6, r7, r8, r9, r10, r11, r12, r13, r14, r15, r16, r17, r18, r19, r20, r21, r22, r23],
+    details:
+      "Developed a full-stack restaurant ordering and management system featuring a customer-facing website and an administrative dashboard", 
     
     },
 
