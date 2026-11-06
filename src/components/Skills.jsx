@@ -1,6 +1,6 @@
 /* import { motion } from "framer-motion"; */
 import "../styles/skills.css";
-
+import { motion } from "framer-motion";
 import {
   SiMongodb,
   SiMysql,

@@ -83,31 +83,31 @@ import game8 from "../assets/game/game8.jpg";
 import game9 from "../assets/game/game9.jpg";
 import game10 from "../assets/game/game1.jpg";
 
-import r1 from "../assets/r/r10.jpg";
-import r2 from "../assets/r/r2.jpg";
-import r3 from "../assets/r/r3.jpg";
-import r4 from "../assets/r/r4.jpg";
-import r5 from "../assets/r/r5.jpg";
-import r6 from "../assets/r/r6.jpg";
-import r7 from "../assets/r/r7.jpg";
-import r8 from "../assets/r/r8.jpg";
-import r9 from "../assets/r/r9.jpg";
-import r10 from "../assets/r/r1.jpg";
+import r1 from "../assets/r/r4.png";
+import r2 from "../assets/r/r2.png";
+import r3 from "../assets/r/r3.png";
+import r4 from "../assets/r/r10.png";
+import r5 from "../assets/r/r5.png";
+import r6 from "../assets/r/r6.png";
+import r7 from "../assets/r/r7.png";
+import r8 from "../assets/r/r8.png";
+import r9 from "../assets/r/r9.png";
+import r10 from "../assets/r/r1.png";
 
-import r11 from "../assets/r/r11.jpg";
-import r12 from "../assets/r/r12.jpg";
-import r13 from "../assets/r/r13.jpg";
-import r14 from "../assets/r/r14.jpg";
-import r15 from "../assets/r/r15.jpg";
-import r16 from "../assets/r/r16.jpg";
-import r17 from "../assets/r/r17.jpg";
-import r18 from "../assets/r/r18.jpg";
-import r19 from "../assets/r/r19.jpg";
-import r20 from "../assets/r/r20.jpg";
+import r11 from "../assets/r/r11.png";
+import r12 from "../assets/r/r12.png";
+import r13 from "../assets/r/r13.png";
+import r14 from "../assets/r/r14.png";
+import r15 from "../assets/r/r15.png";
+import r16 from "../assets/r/r16.png";
+import r17 from "../assets/r/r17.png";
+import r18 from "../assets/r/r18.png";
+import r19 from "../assets/r/r19.png";
+import r20 from "../assets/r/r20.png";
 
-import r21 from "../assets/r/r21.jpg";
-import r22 from "../assets/r/r22.jpg";
-import r23 from "../assets/r/r23.jpg";
+import r21 from "../assets/r/r21.png";
+import r22 from "../assets/r/r22.png";
+import r23 from "../assets/r/r23.png";
 /* =========================
    Data
 ========================= */
@@ -295,11 +295,13 @@ const projectsData = [
     category: "web",
     description:
       "Restaurant | Full-Stack Ordering & Management System:",
-    tech: ["React.js", "Javascript", "CSS", "Tailwind CSS", "HTML"],
+    tech: ["React.js", "Javascript", "ASP.NET Core", "CSS", "Tailwind CSS"],
     images: [r1, r2, r3, r4, r5, r6, r7, r8, r9, r10, r11, r12, r13, r14, r15, r16, r17, r18, r19, r20, r21, r22, r23],
     details:
-      "Developed a full-stack restaurant ordering and management system featuring a customer-facing website and an administrative dashboard", 
-    
+      `Developed a full-stack restaurant ordering and management system featuring a customer-facing website and an administrative dashboard. Customers can browse food menus, add items to their cart, and place orders. Administrators can manage menu items, inventory, orders, stock availability, and reports.
+
+Implemented payment verification, OTP-based order confirmation, SMS notifications, and menu scheduling to streamline restaurant operations.", 
+   ` 
     },
 
 
