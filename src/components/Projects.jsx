@@ -320,18 +320,16 @@ Implemented payment verification, OTP-based order confirmation, SMS notification
    ` 
     },
     {
-    id: 14,
-    title: "Restaurant Ordering System",
+    id: 15,
+    title: "Risk Management System",
     category: "web",
     description:
-      "Restaurant | Full-Stack Ordering & Management System:",
-    tech: ["React.js", "Javascript", "ASP.NET Core", "CSS", "Tailwind CSS"],
-    images: [r1, r2, r3, r4, r5, r6, r7, r8, r9, r10, r11, r12, r13, r14, r15, r16, r17, r18, r19, r20, r21, r22, r23],
+      "Source code: https://github.com/NatnaelAbreham/RiskManagement",
+    tech: [ "Javascript", "ASP.NET Core MVC", "CSS", "Bootstrap", "SQL Server"],
+    images: [risk1, risk2, risk3, risk4, risk5, risk6, risk7, risk8, risk9, risk10, risk11, risk12, risk13],
     details:
-      `Developed a full-stack restaurant ordering and management system featuring a customer-facing website and an administrative dashboard. Customers can browse food menus, add items to their cart, and place orders. Administrators can manage menu items, inventory, orders, stock availability, and reports.
-
-Implemented payment verification, OTP-based order confirmation, SMS notifications, and menu scheduling to streamline restaurant operations.", 
-   ` 
+      `Developed a web-based Risk Management System to help organizations register, assess, monitor, and manage business risks. The application includes risk evaluation, inherent and residual risk ratings, role-based access control, document management, and reporting features.
+  ` 
     },
 
 
