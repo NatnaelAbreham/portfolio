@@ -124,6 +124,15 @@ import risk12 from "../assets/risk/risk12.png";
 import risk13 from "../assets/risk/risk13.png";
 
 
+import beauty_salon1 from "../assets/beauty_salon/beauty_salon1.png";
+import beauty_salon2 from "../assets/beauty_salon/beauty_salon2.png";
+import beauty_salon3 from "../assets/beauty_salon/beauty_salon3.png";
+import beauty_salon4 from "../assets/beauty_salon/beauty_salon4.png";
+import beauty_salon5 from "../assets/beauty_salon/beauty_salon5.png";
+import beauty_salon6 from "../assets/beauty_salon/beauty_salon6.png";
+import beauty_salon7 from "../assets/beauty_salon/beauty_salon7.png";
+
+
 /* =========================
    Data
 ========================= */
@@ -327,6 +336,17 @@ Implemented payment verification, OTP-based order confirmation, SMS notification
       "Source code: https://github.com/NatnaelAbreham/RiskManagement",
     tech: [ "Javascript", "ASP.NET Core MVC", "CSS", "Bootstrap", "SQL Server"],
     images: [risk13, risk2, risk3, risk4, risk5, risk6, risk7, risk8, risk9, risk10, risk11, risk12, risk1],
+    details:
+      `Developed a web-based Risk Management System to help organizations register, assess, monitor, and manage business risks. The application includes risk evaluation, inherent and residual risk ratings, role-based access control, document management, and reporting features.
+  ` 
+    }, {
+    id: 16,
+    title: "Beauty Salon Website",
+    category: "web",
+    description:
+      "https://github.com/NatnaelAbreham/Beauty-Salon.git",
+    tech: [ "React", "Tailwind CSS"],
+    images: [beauty_salon1, beauty_salon2, beauty_salon3, beauty_salon4, beauty_salon5, beauty_salon6, beauty_salon7],
     details:
       `Developed a web-based Risk Management System to help organizations register, assess, monitor, and manage business risks. The application includes risk evaluation, inherent and residual risk ratings, role-based access control, document management, and reporting features.
   ` 
