@@ -109,19 +109,19 @@ import r21 from "../assets/r/r21.png";
 import r22 from "../assets/r/r22.png";
 import r23 from "../assets/r/r23.png";
 
-import risk1 from "../assets/risk/risk10.jpg";
-import risk2 from "../assets/risk/risk2.jpg";
-import risk3 from "../assets/risk/risk3.jpg";
-import risk4 from "../assets/risk/risk4.jpg";
-import risk5 from "../assets/risk/risk5.jpg";
-import risk6 from "../assets/risk/risk6.jpg";
-import risk7 from "../assets/risk/risk7.jpg";
-import risk8 from "../assets/risk/risk8.jpg";
-import risk9 from "../assets/risk/risk9.jpg";
-import risk10 from "../assets/risk/risk1.jpg";
-import risk11 from "../assets/risk/risk11.jpg";
-import risk12 from "../assets/risk/risk12.jpg";
-import risk13 from "../assets/risk/risk13.jpg";
+import risk1 from "../assets/risk/risk10.png";
+import risk2 from "../assets/risk/risk2.png";
+import risk3 from "../assets/risk/risk3.png";
+import risk4 from "../assets/risk/risk4.png";
+import risk5 from "../assets/risk/risk5.png";
+import risk6 from "../assets/risk/risk6.png";
+import risk7 from "../assets/risk/risk7.png";
+import risk8 from "../assets/risk/risk8.png";
+import risk9 from "../assets/risk/risk9.png";
+import risk10 from "../assets/risk/risk1.png";
+import risk11 from "../assets/risk/risk11.png";
+import risk12 from "../assets/risk/risk12.png";
+import risk13 from "../assets/risk/risk13.png";
 
 
 /* =========================
@@ -326,7 +326,7 @@ Implemented payment verification, OTP-based order confirmation, SMS notification
     description:
       "Source code: https://github.com/NatnaelAbreham/RiskManagement",
     tech: [ "Javascript", "ASP.NET Core MVC", "CSS", "Bootstrap", "SQL Server"],
-    images: [risk1, risk2, risk3, risk4, risk5, risk6, risk7, risk8, risk9, risk10, risk11, risk12, risk13],
+    images: [risk13, risk2, risk3, risk4, risk5, risk6, risk7, risk8, risk9, risk10, risk11, risk12, risk1],
     details:
       `Developed a web-based Risk Management System to help organizations register, assess, monitor, and manage business risks. The application includes risk evaluation, inherent and residual risk ratings, role-based access control, document management, and reporting features.
   ` 
