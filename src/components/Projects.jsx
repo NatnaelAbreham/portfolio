@@ -363,6 +363,19 @@ Implemented payment verification, OTP-based order confirmation, SMS notification
 I focused on creating a balance between visual appeal and functionality to ensure an engaging and seamless experience across all devices. ` 
     },
 
+     {
+    id: 17,
+    title: "Modern Church Community Platform | Streaming, Ministries & Engagement",
+    category: "web",
+    description:
+      "https://natnaelabreham.github.io/church/",
+    tech: [ "React", "Tailwind CSS"],
+    images: [church1, church2, church3, church4, church5, church6, church7, church8, church9, church10],
+    details:
+      `Modern Church Community Platform built with React and Tailwind CSS, designed for churches to manage and engage their congregation online. It features live streaming, sermons, events, ministries, announcements, prayer requests, donations, and more. The platform is fully responsive with dark mode, smooth navigation, and modern UI/UX design, providing a complete digital solution for church community interaction and engagement. ` 
+    },
+
+
 
   
 ];
