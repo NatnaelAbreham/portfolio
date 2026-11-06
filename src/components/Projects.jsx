@@ -131,6 +131,17 @@ import beauty_salon4 from "../assets/beauty_salon/beauty_salon4.png";
 import beauty_salon5 from "../assets/beauty_salon/beauty_salon5.png";
 import beauty_salon6 from "../assets/beauty_salon/beauty_salon6.png";
 
+import church1 from "../assets/church/church1.png";
+import church2 from "../assets/church/church2.png";
+import church3 from "../assets/church/church3.png";
+import church4 from "../assets/church/church4.png";
+import church5 from "../assets/church/church5.png";
+import church6 from "../assets/church/church6.png";
+import church7 from "../assets/church/church7.png";
+import church8 from "../assets/church/church8.png";
+import church9 from "../assets/church/church9.png";
+import church10 from "../assets/church/church10.png";
+
 
 /* =========================
    Data
@@ -338,7 +349,8 @@ Implemented payment verification, OTP-based order confirmation, SMS notification
     details:
       `Developed a web-based Risk Management System to help organizations register, assess, monitor, and manage business risks. The application includes risk evaluation, inherent and residual risk ratings, role-based access control, document management, and reporting features.
   ` 
-    }, {
+    }, 
+    {
     id: 16,
     title: "Beauty Salon Website",
     category: "web",
