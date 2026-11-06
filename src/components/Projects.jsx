@@ -130,7 +130,6 @@ import beauty_salon3 from "../assets/beauty_salon/beauty_salon3.png";
 import beauty_salon4 from "../assets/beauty_salon/beauty_salon4.png";
 import beauty_salon5 from "../assets/beauty_salon/beauty_salon5.png";
 import beauty_salon6 from "../assets/beauty_salon/beauty_salon6.png";
-import beauty_salon7 from "../assets/beauty_salon/beauty_salon7.png";
 
 
 /* =========================
@@ -346,10 +345,10 @@ Implemented payment verification, OTP-based order confirmation, SMS notification
     description:
       "https://github.com/NatnaelAbreham/Beauty-Salon.git",
     tech: [ "React", "Tailwind CSS"],
-    images: [beauty_salon1, beauty_salon2, beauty_salon3, beauty_salon4, beauty_salon5, beauty_salon6, beauty_salon7],
+    images: [beauty_salon3, beauty_salon2, beauty_salon1, beauty_salon4, beauty_salon5, beauty_salon6],
     details:
-      `Developed a web-based Risk Management System to help organizations register, assess, monitor, and manage business risks. The application includes risk evaluation, inherent and residual risk ratings, role-based access control, document management, and reporting features.
-  ` 
+      `I developed a modern, responsive beauty salon website designed to attract clients and showcase services in a visually appealing way. The website features a clean and elegant user interface, smooth animations, and a well-structured layout that enhances user experience.
+I focused on creating a balance between visual appeal and functionality to ensure an engaging and seamless experience across all devices. ` 
     },
 
 
