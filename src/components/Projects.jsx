@@ -108,6 +108,22 @@ import r20 from "../assets/r/r20.png";
 import r21 from "../assets/r/r21.png";
 import r22 from "../assets/r/r22.png";
 import r23 from "../assets/r/r23.png";
+
+import risk1 from "../assets/risk/risk10.jpg";
+import risk2 from "../assets/risk/risk2.jpg";
+import risk3 from "../assets/risk/risk3.jpg";
+import risk4 from "../assets/risk/risk4.jpg";
+import risk5 from "../assets/risk/risk5.jpg";
+import risk6 from "../assets/risk/risk6.jpg";
+import risk7 from "../assets/risk/risk7.jpg";
+import risk8 from "../assets/risk/risk8.jpg";
+import risk9 from "../assets/risk/risk9.jpg";
+import risk10 from "../assets/risk/risk1.jpg";
+import risk11 from "../assets/risk/risk11.jpg";
+import risk12 from "../assets/risk/risk12.jpg";
+import risk13 from "../assets/risk/risk13.jpg";
+
+
 /* =========================
    Data
 ========================= */
@@ -289,6 +305,20 @@ const projectsData = [
     },
 
 
+    {
+    id: 14,
+    title: "Restaurant Ordering System",
+    category: "web",
+    description:
+      "Restaurant | Full-Stack Ordering & Management System:",
+    tech: ["React.js", "Javascript", "ASP.NET Core", "CSS", "Tailwind CSS"],
+    images: [r1, r2, r3, r4, r5, r6, r7, r8, r9, r10, r11, r12, r13, r14, r15, r16, r17, r18, r19, r20, r21, r22, r23],
+    details:
+      `Developed a full-stack restaurant ordering and management system featuring a customer-facing website and an administrative dashboard. Customers can browse food menus, add items to their cart, and place orders. Administrators can manage menu items, inventory, orders, stock availability, and reports.
+
+Implemented payment verification, OTP-based order confirmation, SMS notifications, and menu scheduling to streamline restaurant operations.", 
+   ` 
+    },
     {
     id: 14,
     title: "Restaurant Ordering System",
